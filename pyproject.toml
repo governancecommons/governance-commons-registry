@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "governance-commons"
+version = "0.1.0"
+description = "Governance Commons reference implementation — ONS name validation and shared utilities for Python adopters."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "jj-ervin" }]
+keywords = [
+    "governance",
+    "naming",
+    "ons",
+    "ontic-namespace-structure",
+    "schema",
+    "validation",
+    "agent",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Quality Assurance",
+    "Typing :: Typed",
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.urls]
+Homepage = "https://governancecommons.org"
+Repository = "https://github.com/governancecommons/governance-commons-code"
+Documentation = "https://governancecommons.org/docs"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "build>=1.0",
+    "twine>=5.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["governance_commons*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

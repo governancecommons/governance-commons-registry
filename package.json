@@ -1,0 +1,56 @@
+{
+  "name": "governance-commons",
+  "version": "0.1.0",
+  "description": "Governance Commons reference implementation — ONS name validation, schema utilities, and shared types for TypeScript/JavaScript adopters.",
+  "keywords": [
+    "governance",
+    "naming",
+    "ons",
+    "ontic-namespace-structure",
+    "schema",
+    "validation",
+    "agent"
+  ],
+  "license": "MIT",
+  "author": "jj-ervin",
+  "homepage": "https://governancecommons.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/governancecommons/governance-commons-code"
+  },
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./ons": {
+      "import": "./dist/esm/ons.js",
+      "require": "./dist/cjs/ons.js",
+      "types": "./dist/types/ons.d.ts"
+    }
+  },
+  "files": [
+    "dist/cjs/",
+    "dist/esm/",
+    "dist/types/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run typecheck && npm run build",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
