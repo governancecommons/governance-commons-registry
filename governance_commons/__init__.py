@@ -2,7 +2,7 @@
 governance-commons — Python reference implementation.
 
 Provides ONS name validation, casing rule checks, governance ID parsing,
-and separator grammar utilities derived from the canonical ONS specification.
+separator grammar utilities, and the GC conformance report format.
 """
 
 from .ons import (
@@ -21,10 +21,18 @@ from .ons import (
     validate_cluster,
     validate_name,
 )
+from .report import (
+    GC_REPORT_VERSION,
+    ConformanceReport,
+    ReportSummary,
+    RuleResult,
+    build_report,
+)
 
 __version__ = "0.1.0"
 __all__ = [
     "__version__",
+    # ONS
     "CASING_RULES",
     "ONS_SPEC_VERSION",
     "SEPARATORS",
@@ -39,4 +47,10 @@ __all__ = [
     "parse_governance_id",
     "validate_cluster",
     "validate_name",
+    # Conformance report
+    "GC_REPORT_VERSION",
+    "ConformanceReport",
+    "ReportSummary",
+    "RuleResult",
+    "build_report",
 ]

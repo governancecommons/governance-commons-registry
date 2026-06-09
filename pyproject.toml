@@ -37,6 +37,10 @@ Homepage = "https://governancecommons.org"
 Repository = "https://github.com/governancecommons/governance-commons-sdk"
 Documentation = "https://governancecommons.org/docs"
 
+[project.scripts]
+gc-validate = "governance_commons.cli:validate_cmd"
+gc-report = "governance_commons.cli:report_cmd"
+
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0",
