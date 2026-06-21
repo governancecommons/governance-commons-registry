@@ -1,4 +1,4 @@
-# governance-commons
+# governance-commons-sdk
 
 Reference implementations for Governance Commons standards.
 
@@ -14,7 +14,7 @@ Both package manifests are scaffolded for version `0.1.0`. Registry publication 
 ## Development
 
 ```powershell
-pytest -q
+python -m pytest -q
 npm test
 python -m build
 npm pack --dry-run
