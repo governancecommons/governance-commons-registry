@@ -1,6 +1,7 @@
-# Governance Commons SDK - Development Plan
+# DEV-PLAN — Governance Commons SDK
 
-Status: active
+**AUTHORITY LEVEL: AL:1**
+**Status:** active
 Updated: 2026-06-21
 
 ## Purpose

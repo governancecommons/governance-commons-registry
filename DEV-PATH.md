@@ -1,6 +1,7 @@
-# Governance Commons SDK - Development Path
+# DEV-PATH — Governance Commons SDK
 
-Status: active
+**AUTHORITY LEVEL: AL:1**
+**Status:** active
 Updated: 2026-06-21
 
 ## Role
