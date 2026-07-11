@@ -11,7 +11,7 @@ function windowsQuote(value) {
 
 function expect(code, args) {
   const result = process.platform === "win32"
-    ? spawnSync(process.env.ComSpec || "cmd.exe", ["/d", "/s", "/c", [command, ...args].map(windowsQuote).join(" ")], { encoding: "utf8" })
+    ? spawnSync(process.env.ComSpec || "cmd.exe", ["/d", "/s", "/c", [command, ...args.map(windowsQuote)].join(" ")], { encoding: "utf8" })
     : spawnSync(command, args, { encoding: "utf8", shell: false });
   if (result.error) throw result.error;
   if (result.status !== code) {
