@@ -1,0 +1,6 @@
+{
+  "checks": [
+    { "domain": "python_identifier", "name": "run_intent" },
+    { "domain": "governance_cluster", "name": "ONS" }
+  ]
+}

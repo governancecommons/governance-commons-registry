@@ -1,0 +1,5 @@
+{
+  "checks": [
+    { "domain": "python_identifier", "name": "RunIntent" }
+  ]
+}
