@@ -34,7 +34,7 @@ dependencies = []
 
 [project.urls]
 Homepage = "https://governancecommons.org"
-Repository = "https://github.com/governancecommons/governance-commons-sdk"
+Repository = "https://github.com/governancecommons/governance-commons-registry"
 Documentation = "https://governancecommons.org/docs"
 
 [project.scripts]

@@ -1,4 +1,4 @@
-# governance-commons-sdk
+# governance-commons-registry
 
 Reference implementations for Governance Commons standards.
 

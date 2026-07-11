@@ -16,7 +16,7 @@
   "homepage": "https://governancecommons.org",
   "repository": {
     "type": "git",
-    "url": "https://github.com/governancecommons/governance-commons-sdk"
+    "url": "https://github.com/governancecommons/governance-commons-registry"
   },
   "type": "module",
   "bin": {
