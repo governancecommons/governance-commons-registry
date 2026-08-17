@@ -1,6 +1,6 @@
 {
   "name": "governance-commons",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Governance Commons reference implementation — ONS name validation, schema utilities, and shared types for TypeScript/JavaScript adopters.",
   "keywords": [
     "governance",
@@ -13,7 +13,7 @@
   ],
   "license": "MIT",
   "author": "jj-ervin",
-  "homepage": "https://governancecommons.org",
+  "homepage": "https://github.com/governancecommons/governance-commons-registry",
   "repository": {
     "type": "git",
     "url": "https://github.com/governancecommons/governance-commons-registry"
