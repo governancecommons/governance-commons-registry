@@ -1,0 +1,11 @@
+schema_version: "0.1"
+component:
+  id: clean-install-smoke
+  name: Clean Install Smoke
+  type: cli
+  status: experimental
+provides:
+  - id: governance.contract
+    version: "0.1"
+    stability: experimental
+    summary: Invalid two-segment capability ID.

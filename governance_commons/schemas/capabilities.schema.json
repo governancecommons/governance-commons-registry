@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://governancecommons.org/schemas/contracts/capabilities/v0.1/schema.json",
+  "title": "Capability Contract v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "component", "provides"],
+  "properties": {
+    "schema_version": {"type": "string", "const": "0.1"},
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "type", "status"],
+      "properties": {
+        "id": {"$ref": "#/$defs/componentId"},
+        "name": {"type": "string", "minLength": 1},
+        "type": {
+          "type": "string",
+          "enum": ["application", "service", "library", "module", "cli", "extension", "sdk", "framework", "agent", "schema", "other"]
+        },
+        "version": {"type": "string", "minLength": 1},
+        "status": {
+          "type": "string",
+          "enum": ["experimental", "active", "stable", "deprecated", "retired"]
+        }
+      }
+    },
+    "provides": {
+      "type": "array",
+      "minItems": 0,
+      "items": {"$ref": "#/$defs/providedCapability"}
+    },
+    "consumes": {
+      "type": "array",
+      "default": [],
+      "items": {"$ref": "#/$defs/consumedCapability"}
+    },
+    "prohibits": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["capability", "reason"],
+        "properties": {
+          "capability": {"$ref": "#/$defs/capabilityId"},
+          "reason": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "owner": {"type": "string"},
+        "repository": {"type": "string"},
+        "docs": {"type": "string"}
+      }
+    }
+  },
+  "$defs": {
+    "componentId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+    },
+    "capabilityId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[_-][a-z0-9]+)*\\.[a-z0-9]+(?:[_-][a-z0-9]+)*\\.[a-z0-9]+(?:[_-][a-z0-9]+)*$"
+    },
+    "stability": {
+      "type": "string",
+      "enum": ["experimental", "preview", "stable", "deprecated"]
+    },
+    "providedCapability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "stability", "summary"],
+      "properties": {
+        "id": {"$ref": "#/$defs/capabilityId"},
+        "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+(?:\\.[0-9]+)?$"},
+        "stability": {"$ref": "#/$defs/stability"},
+        "summary": {"type": "string", "minLength": 1},
+        "interfaces": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "side_effects": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "tags": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "deprecated_by": {"$ref": "#/$defs/capabilityId"},
+        "docs": {"type": "string", "minLength": 1}
+      }
+    },
+    "consumedCapability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "requirement"],
+      "properties": {
+        "id": {"$ref": "#/$defs/capabilityId"},
+        "requirement": {"type": "string", "enum": ["required", "optional", "replaceable"]},
+        "version": {"type": "string", "pattern": "^(>=|<=|>|<|=|~|\\^)?[0-9]+\\.[0-9]+(?:\\.[0-9]+)?$"},
+        "provider_hint": {"type": "string", "minLength": 1},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "governance-commons"
-version = "0.1.1"
-description = "Governance Commons reference implementation — ONS name validation and shared utilities for Python adopters."
+version = "0.2.0"
+description = "Governance Commons reference implementation for ONS and capability-contract validation."
 readme = "README.md"
 license = "MIT"
 authors = [{ name = "jj-ervin" }]
@@ -30,7 +30,10 @@ classifiers = [
     "Typing :: Typed",
 ]
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "jsonschema>=4.23",
+    "PyYAML>=6.0",
+]
 
 [project.urls]
 Homepage = "https://github.com/governancecommons/governance-commons-registry"
@@ -39,6 +42,7 @@ Repository = "https://github.com/governancecommons/governance-commons-registry"
 [project.scripts]
 gc-validate = "governance_commons.cli:validate_cmd"
 gc-report = "governance_commons.cli:report_cmd"
+gc-discover = "governance_commons.capabilities_cli:discover_cmd"
 
 [project.optional-dependencies]
 dev = [
@@ -50,6 +54,9 @@ dev = [
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["governance_commons*"]
+
+[tool.setuptools.package-data]
+governance_commons = ["py.typed", "schemas/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

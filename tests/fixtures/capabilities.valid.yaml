@@ -1,0 +1,12 @@
+schema_version: "0.1"
+component:
+  id: clean-install-smoke
+  name: Clean Install Smoke
+  type: cli
+  version: "0.2.0"
+  status: experimental
+provides:
+  - id: governance.contract.validate
+    version: "0.1"
+    stability: experimental
+    summary: Validate a capability declaration.

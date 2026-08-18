@@ -17,6 +17,8 @@ helpers for Python and TypeScript/JavaScript adopters.
 | Python package `governance-commons` | Implemented | `governance_commons/`, `pyproject.toml` |
 | npm package `governance-commons` | Implemented | `src/`, `package.json` |
 | CLI wrappers | Implemented | `gc-validate`, `gc-report` |
+| Capability Contract v0.1 validation | Implemented in Python v0.2.0 | `governance_commons/capabilities.py`, bundled schema |
+| Capability provider discovery | Implemented in Python v0.2.0 | `gc-discover`; explicit repository roots, exact-ID query |
 | Tests | Implemented | `tests/`, `npm test` |
 | Registry publication | Planned | PyPI/npm publication pending |
 
@@ -30,6 +32,7 @@ helpers for Python and TypeScript/JavaScript adopters.
 | GC-SDK.04 | Add SDK usage examples for GC adopters | P1 | planned |
 | GC-SDK.05 | Define compatibility policy for spec versions | P1 | planned |
 | GC-SDK.06 | Prove clean-artifact installs across Windows, macOS, and Linux | P0 | matrix implemented; remote runner evidence pending |
+| GC-SDK.07 | Implement Capability Contract v0.1 validation and discovery MVP | P0 | implemented; Python source tests and build pass, pilot adoption pending |
 
 ## Cross-Platform Release Gate (2026-07-11)
 
@@ -51,3 +54,14 @@ npm test
 python -m build
 npm pack --dry-run
 ```
+
+Capability MVP validation additionally requires:
+
+```powershell
+gc-validate --spec capabilities <repo>/.governance/contracts/capabilities.yaml
+gc-discover --capability <capability-id> <repo-root> [<repo-root> ...]
+```
+
+Python v0.2.0 contains the capability-contract MVP. The npm package remains at
+v0.1.1 and ONS-only; TypeScript parity is not part of the initial architecture
+proof. Publishing Python v0.2.0 remains a separate release action.

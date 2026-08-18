@@ -28,8 +28,18 @@ from .report import (
     RuleResult,
     build_report,
 )
+from .capabilities import (
+    CAPABILITY_CONTRACT_VERSION,
+    CAPABILITY_RELATIVE_PATH,
+    CapabilityDiscoveryResult,
+    CapabilityValidationResult,
+    ValidationIssue,
+    discover_capabilities,
+    validate_capability_contract,
+    validate_capability_data,
+)
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __all__ = [
     "__version__",
     # ONS
@@ -53,4 +63,13 @@ __all__ = [
     "ReportSummary",
     "RuleResult",
     "build_report",
+    # Capability contracts
+    "CAPABILITY_CONTRACT_VERSION",
+    "CAPABILITY_RELATIVE_PATH",
+    "CapabilityDiscoveryResult",
+    "CapabilityValidationResult",
+    "ValidationIssue",
+    "discover_capabilities",
+    "validate_capability_contract",
+    "validate_capability_data",
 ]

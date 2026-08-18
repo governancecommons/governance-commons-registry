@@ -21,6 +21,9 @@ subprocess.run(
 command = shutil.which("gc-validate")
 if command is None:
     raise SystemExit("installed gc-validate console script not found on PATH")
+discover_command = shutil.which("gc-discover")
+if discover_command is None:
+    raise SystemExit("installed gc-discover console script not found on PATH")
 
 
 def expect(code: int, *args: str) -> None:
@@ -36,3 +39,16 @@ fixtures = ROOT / "tests" / "fixtures"
 expect(0, "--spec", "ons", "--output", "json", str(fixtures / "valid checks ünicode.json"))
 expect(1, "--spec", "ons", str(fixtures / "invalid checks ünicode.json"))
 expect(2, "--spec", "ons", str(fixtures / "missing file.json"))
+expect(0, "--spec", "capabilities", str(fixtures / "capabilities.valid.yaml"))
+expect(1, "--spec", "capabilities", str(fixtures / "capabilities.invalid.yaml"))
+
+discovery = subprocess.run(
+    [discover_command, "--output", "json", str(fixtures / "capabilities.valid.yaml")],
+    text=True,
+    capture_output=True,
+)
+if discovery.returncode != 0 or '"authority_evaluated": false' not in discovery.stdout:
+    raise SystemExit(
+        "installed gc-discover smoke test failed\n"
+        f"stdout:\n{discovery.stdout}\nstderr:\n{discovery.stderr}"
+    )

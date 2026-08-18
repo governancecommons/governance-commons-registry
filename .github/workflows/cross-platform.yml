@@ -54,6 +54,6 @@ jobs:
         run: |
           node -e "require('node:fs').mkdirSync('artifacts', { recursive: true })"
           npm pack --pack-destination artifacts
-          npm install --global ./artifacts/governance-commons-0.1.0.tgz
+          npm install --global ./artifacts/governance-commons-0.1.1.tgz
       - name: Smoke-test installed console scripts
         run: node tests/clean-install-smoke.mjs

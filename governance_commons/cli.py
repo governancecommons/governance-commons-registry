@@ -6,6 +6,7 @@ import json
 import sys
 from pathlib import Path
 
+from .capabilities import CAPABILITY_CONTRACT_VERSION, validate_capability_contract
 from .ons import ONS_SPEC_VERSION, validate_name
 from .report import ConformanceReport, RuleResult, build_report
 
@@ -67,6 +68,31 @@ def _validate_ons(subject: str, profile: str) -> ConformanceReport:
     )
 
 
+def _validate_capabilities(subject: str, profile: str) -> ConformanceReport:
+    result = validate_capability_contract(subject)
+    if result.valid:
+        rules = [RuleResult(
+            rule_id="GC-CAP-SCHEMA-000",
+            description="Capability declaration satisfies v0.1 structure and semantics",
+            result="pass",
+        )]
+    else:
+        rules = [RuleResult(
+            rule_id=issue.rule_id,
+            description=f"Capability contract issue at {issue.path}",
+            result="fail",
+            message=issue.message,
+        ) for issue in result.issues]
+
+    return build_report(
+        spec="capabilities",
+        spec_version=CAPABILITY_CONTRACT_VERSION,
+        profile=profile,  # type: ignore[arg-type]
+        subject=subject,
+        rules=rules,
+    )
+
+
 def _print_text(report: ConformanceReport) -> None:
     status = "PASS" if report.conformant else "FAIL"
     print(f"GC Conformance Report")
@@ -90,7 +116,7 @@ def validate_cmd() -> None:
         prog="gc-validate",
         description="Validate a subject against a Governance Commons spec.",
     )
-    parser.add_argument("--spec", required=True, choices=["ons"],
+    parser.add_argument("--spec", required=True, choices=["ons", "capabilities"],
                         help="Spec to validate against.")
     parser.add_argument("--profile", default="standard",
                         choices=["advisory", "standard", "strict"],
@@ -102,6 +128,8 @@ def validate_cmd() -> None:
 
     if args.spec == "ons":
         report = _validate_ons(args.subject, args.profile)
+    elif args.spec == "capabilities":
+        report = _validate_capabilities(args.subject, args.profile)
     else:
         print(f"gc-validate: unsupported spec '{args.spec}'", file=sys.stderr)
         sys.exit(2)
