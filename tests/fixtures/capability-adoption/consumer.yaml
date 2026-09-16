@@ -1,0 +1,13 @@
+schema_version: "0.1"
+component:
+  id: example-consumer
+  name: Example Capability Consumer
+  type: application
+  version: "1.0.0"
+  status: active
+provides: []
+consumes:
+  - id: asset.palette.generate
+    requirement: required
+    version: ">=1.0"
+    reason: The application requires deterministic palette generation.
