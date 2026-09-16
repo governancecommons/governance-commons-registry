@@ -14,9 +14,6 @@ permissions:
   contents: read
   id-token: write
 
-env:
-  SDK_VERSION: ${{ inputs.version || github.ref_name && startsWith(github.ref_name, 'sdk-v') && github.ref_name || '' }}
-
 jobs:
   build:
     name: Build distribution
