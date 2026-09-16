@@ -8,7 +8,8 @@
 
 `governance-commons-registry` is the code-level reference implementation repo
 for Governance Commons standards. It provides specification validators,
-capability discovery, and the shared machine-readable ConformanceReport contract.
+capability discovery, version compatibility declarations, and the shared
+machine-readable ConformanceReport contract.
 
 The registry intentionally keeps specification responsibilities separate. The
 current contract relationships and authority boundaries are normative in
@@ -16,7 +17,7 @@ current contract relationships and authority boundaries are normative in
 The workflow/lifecycle relationship is normative in
 [`docs/architecture/workflow-lifecycle.md`](docs/architecture/workflow-lifecycle.md).
 The explicit workflow-to-record bridge is normative in
-[`docs/architecture/workflow-governance-record-mapping.md`](docs/architecture/workflow-governance-record-mapping.md).
+`docs/architecture/workflow-governance-record-mapping.md`.
 
 ## Current Surface
 
@@ -35,6 +36,7 @@ The explicit workflow-to-record bridge is normative in
 | A5 Governance Record acceptance gate | Implemented | `tests/test_a5_acceptance.py` |
 | Cross-platform clean-artifact CI | Implemented | `.github/workflows/` |
 | Python/TypeScript adopter examples | Implemented | `examples/` |
+| SDK/spec compatibility policy | Implemented | `governance_commons/versioning.py`, `src/versioning.ts`, `docs/sdk-compatibility.md` |
 | TypeScript parity for Dossier/Capability/Governance Record | Not yet implemented | Deliberate current asymmetry |
 | Agent Matrix validator | Not implemented in this repo | Separate contract/workstream |
 | Project Orchestrator validator | Not implemented in this repo | Separate contract/workstream |
@@ -65,12 +67,6 @@ events. Governance Record captures those events; governance rules evaluate the
 applicable authority/evidence; ConformanceReport remains the shared validation
 output boundary.
 
-The normative lifecycle reconciliation is documented in
-`docs/architecture/workflow-lifecycle.md`. It establishes that workflow state,
-record type, and governance status remain distinct, that timestamps and
-relations provide event linkage, and that the registry is not an execution
-runtime or orchestrator.
-
 ## Active Priorities
 
 | ID | Work | Priority | Status |
@@ -82,8 +78,21 @@ runtime or orchestrator.
 | GC-SDK.02 | Keep `gc-validate` and `gc-report` stable for downstream tools | P0 | active |
 | GC-SDK.03 | Maintain package/release workflows | P1 | active |
 | GC-SDK.04 | Add SDK usage examples for GC adopters | P1 | complete |
-| GC-SDK.05 | Define compatibility policy for spec versions | P1 | planned |
+| GC-SDK.05 | Define compatibility policy for spec versions | P1 | complete |
 | GC-SDK.07 | Capability Contract v0.1 adoption beyond MVP | P1 | active |
+
+## GC-SDK.05 compatibility boundary
+
+SDK/package versions and specification versions are independent. The repository
+now declares an explicit current and minimum-compatible version for every
+implemented specification. Current declarations are exact-only because no older
+schema revision is bundled. An older version is therefore not treated as
+compatible merely because it shares a major version. Future major versions,
+unsupported older versions, malformed versions, and unknown specifications are
+reported explicitly rather than silently falling back to another contract.
+
+The normative policy is `docs/sdk-compatibility.md`. Python and TypeScript expose
+the same classification API for adopters.
 
 ## Validation
 
@@ -96,23 +105,10 @@ python -m build
 npm pack --dry-run
 ```
 
-Python validation currently supports:
-
-```powershell
-gc-validate --spec ons <subject>
-gc-validate --spec capabilities <subject>
-gc-validate --spec dossier <subject>
-gc-validate --spec governance-record <subject>
-gc-discover --capability <capability-id> <repo-root> [<repo-root> ...]
-```
-
-The npm surface currently remains ONS/report focused. TypeScript parity for
-Capability Contract, Agent Dossier, and Governance Record is a future decision,
-not an assumed requirement of the current architecture.
-
-Adopter examples in `examples/` use the existing public SDK/validator surfaces
-and existing representative fixtures; they do not define parallel schemas or
-runtime behavior.
+The version compatibility suite covers current supported versions, explicitly
+ranged older versions, unsupported older versions, future major versions,
+malformed versions, two-part Capability Contract versions, and unknown specs.
+The fixture matrix is under `tests/fixtures/versioning/`.
 
 ## Cross-Platform Release Gate
 
@@ -123,8 +119,8 @@ same cross-platform workflow.
 
 ## Next architectural work
 
-A6.4 and GC-SDK.04 are complete. The next work should preserve the reconciled
-contract and workflow boundaries. The immediate planned follow-on is GC-SDK.05,
-a compatibility policy for relationships among SDK/package versions and
-Governance Commons specification versions, unless adopter evidence causes a
-higher-priority stability or adoption issue to supersede it.
+GC-SDK.05 is complete. The next work should preserve the reconciled contract and
+workflow boundaries while addressing actual adoption/stability evidence. Current
+planned follow-on work remains GC-SDK.02/03 maintenance and GC-SDK.07 Capability
+Contract adoption beyond the MVP; TypeScript parity for the other contracts is
+not assumed without an adopter-driven requirement.
