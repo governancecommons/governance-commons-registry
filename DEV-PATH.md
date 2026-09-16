@@ -25,6 +25,8 @@ belong in separate repos such as `governance-commons-vscode`.
   3.11-3.13 and Node 18/20/22.
 - GC-SDK.04 adopter examples and GC-SDK.05 specification compatibility policy
   are complete.
+- GC-SDK.02 CLI/report behavior and GC-SDK.03 package/release workflow
+  maintenance are complete.
 
 ## SDK 0.2 boundary
 
@@ -38,7 +40,8 @@ does not silently promise compatibility with npm 0.1.x. Existing public
 ONS/report exports remain available, and the Python package additionally
 exposes the validators already implemented in the repository.
 
-See `docs/sdk-0.2-acceptance.md` for the inspectable acceptance criteria.
+See `docs/sdk-0.2-acceptance.md` and `docs/sdk-0.2-release.md` for the
+inspectable acceptance and release criteria.
 
 ## Validation Baseline
 
@@ -49,6 +52,7 @@ python -m pytest -q
 npm test
 python -m build
 npm pack --dry-run
+python tests/release_acceptance.py
 ```
 
 Use `python -m pytest -q` rather than bare `pytest` so the active interpreter
@@ -59,7 +63,7 @@ and local checkout are used consistently.
 | ID | Status | Notes |
 | --- | --- | --- |
 | GC-SDK.02 | complete | CLI/report behavior locked with cross-language acceptance coverage and explicit report-version rejection. |
-| GC-SDK.03 | active | Maintain package/release workflows; publication remains a separate release decision. |
+| GC-SDK.03 | complete | Package/release workflows now validate matching versions, release tags, tests, and clean artifacts before publication. |
 | GC-SDK.04 | complete | Added minimal adopter examples for Python and TypeScript. |
 | GC-SDK.05 | complete | Defined specification compatibility policy. |
 | GC-SDK.07 | active | Continue Capability Contract v0.1 adoption beyond MVP. |
@@ -71,7 +75,15 @@ Ubuntu/macOS/Windows for Python 3.11-3.13 and Node 18/20/22. The matrix builds
 and installs wheel/tarball artifacts rather than editable source, then checks
 `gc-validate` success, conformance failure, and input-error exit codes using
 paths with spaces and Unicode. The npm artifact smoke test is pinned to the
-current SDK 0.2.0 package name.
+current SDK 0.2.0 package name. Release metadata acceptance is also exercised
+across the Python matrix and npm package metadata is checked across the Node
+matrix.
+
+## Package Release Workflow
+
+GC-SDK.03 release mechanics are documented in `docs/sdk-0.2-release.md`.
+Publication remains an explicit release decision. Release workflows do not
+invent versions or silently downgrade package/specification compatibility.
 
 ## Capability Contract MVP
 
@@ -93,5 +105,6 @@ A6.1-A6.4 established the current boundaries:
 - Validators report; they do not execute or grant authority.
 - The workflow-to-record bridge is event-oriented, not a second state machine.
 
-GC-SDK.04 examples and GC-SDK.05 compatibility policy build on those boundaries
-without introducing a new runtime or duplicating any contract schema.
+GC-SDK.04 examples, GC-SDK.05 compatibility policy, and GC-SDK.03 release
+maintenance build on those boundaries without introducing a new runtime or
+duplicating any contract schema.
