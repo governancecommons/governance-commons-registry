@@ -3,7 +3,8 @@ governance-commons — Python reference implementation.
 
 Provides ONS name validation, casing rule checks, governance ID parsing,
 separator grammar utilities, shared conformance reporting, capability
-validation/discovery, and specification compatibility classification.
+validation/discovery, Agent Dossier validation, Governance Record validation,
+and specification compatibility classification.
 """
 
 from .ons import (
@@ -39,6 +40,8 @@ from .capabilities import (
     validate_capability_contract,
     validate_capability_data,
 )
+from .dossier import DOSSIER_SPEC_VERSION, validate_dossier_contract
+from .governance_records import GOVERNANCE_RECORD_SPEC_VERSION, validate_governance_record_contract
 from .compatibility import (
     CompatibilityStatus,
     SUPPORTED_SPEC_VERSIONS,
@@ -80,6 +83,12 @@ __all__ = [
     "discover_capabilities",
     "validate_capability_contract",
     "validate_capability_data",
+    # Agent Dossier
+    "DOSSIER_SPEC_VERSION",
+    "validate_dossier_contract",
+    # Governance Record
+    "GOVERNANCE_RECORD_SPEC_VERSION",
+    "validate_governance_record_contract",
     # Compatibility
     "CompatibilityStatus",
     "SUPPORTED_SPEC_VERSIONS",
