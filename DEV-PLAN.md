@@ -28,6 +28,8 @@ The explicit workflow-to-record bridge is normative in
 | ONS validation | Implemented | Python + TypeScript |
 | Capability Contract v0.1 validation | Implemented in Python | `governance_commons/capabilities.py`, bundled schema |
 | Capability provider discovery | Implemented in Python | `gc-discover` |
+| Capability Contract v0.1 adopter pattern | Implemented | `.governance/contracts/capabilities.yaml`, `docs/capability-adoption.md` |
+| Capability Contract adoption acceptance gate | Implemented | `tests/test_sdk07_acceptance.py`, `tests/fixtures/capability-adoption/` |
 | Agent Dossier instance validation v1.4.0 | Implemented in Python, structural | `governance_commons/dossier.py`, bundled schema |
 | Governance Record v1.0.0 schema validation | Implemented in Python | `governance_commons/governance_records.py`, bundled schema |
 | Governance Record semantic governance rules | Implemented in Python | authorization, temporal authority, handoff/trust-boundary rules |
@@ -85,7 +87,7 @@ runtime or orchestrator.
 | GC-SDK.03 | Maintain package/release workflows | P1 | complete |
 | GC-SDK.04 | Add SDK usage examples for GC adopters | P1 | complete |
 | GC-SDK.05 | Define compatibility policy for spec versions | P1 | complete |
-| GC-SDK.07 | Capability Contract v0.1 adoption beyond MVP | P1 | active |
+| GC-SDK.07 | Capability Contract v0.1 adoption beyond MVP | P1 | complete |
 
 ## Validation
 
@@ -117,6 +119,11 @@ Adopter examples in `examples/` use the existing public SDK/validator surfaces
 and existing representative fixtures; they do not define parallel schemas or
 runtime behavior.
 
+Capability Contract adoption is documented in `docs/capability-adoption.md`.
+The registry itself now carries a canonical `.governance/contracts/capabilities.yaml`
+declaration, and the SDK.07 acceptance gate covers provider, consumer, hybrid,
+prohibited-boundary, semantic-conflict, and multi-provider discovery cases.
+
 Specification compatibility is documented in `docs/compatibility-policy.md`
 and implemented by `governance_commons.compatibility`. SDK/package versions are
 independent of specification versions; compatibility is explicit and never
@@ -141,8 +148,8 @@ not performed by the ordinary cross-platform CI workflow.
 
 ## Next architectural work
 
-A6.4, GC-SDK.02, GC-SDK.03, GC-SDK.04, and GC-SDK.05 are complete. No new
-lifecycle or authority layer is introduced by the compatibility policy, CLI
-stabilization, or release workflow maintenance. Continue Capability Contract
-adoption (GC-SDK.07), using the compatibility policy as the version boundary
-for future specification and package releases.
+A6.4, GC-SDK.02, GC-SDK.03, GC-SDK.04, GC-SDK.05, and GC-SDK.07 are complete. No
+new lifecycle or authority layer is introduced by the compatibility policy, CLI
+stabilization, release workflow maintenance, or Capability Contract adoption.
+Future work should consume the established contract boundaries rather than
+creating parallel declaration, authority, or execution models.
