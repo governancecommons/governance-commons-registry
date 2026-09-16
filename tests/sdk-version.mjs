@@ -1,11 +1,11 @@
 import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { dirname, join } from "node:path";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const packageJson = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
 const lockJson = JSON.parse(readFileSync(join(root, "package-lock.json"), "utf8"));
-const ons = await import(join(root, "dist/esm/ons.js"));
+const ons = await import(pathToFileURL(join(root, "dist/esm/ons.js")).href);
 
 const expected = "0.2.0";
 if (packageJson.version !== expected) throw new Error(`package.json version is ${packageJson.version}, expected ${expected}`);
