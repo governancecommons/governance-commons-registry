@@ -13,6 +13,8 @@ capability discovery, and the shared machine-readable ConformanceReport contract
 The registry intentionally keeps specification responsibilities separate. The
 current contract relationships and authority boundaries are normative in
 [`docs/architecture/contract-boundaries.md`](docs/architecture/contract-boundaries.md).
+The workflow/lifecycle relationship is normative in
+[`docs/architecture/workflow-lifecycle.md`](docs/architecture/workflow-lifecycle.md).
 
 ## Current Surface
 
@@ -52,13 +54,27 @@ The registry follows these rules:
 Structural validity and governance validity remain separate. A record may be
 JSON-Schema-valid and still fail a semantic governance rule.
 
+## Workflow/lifecycle boundary
+
+GC does not define a competing execution lifecycle. POKEE, TBV, eco, LASSO, or
+another compatible workflow may execute work and emit governance-significant
+events. Governance Record captures those events; governance rules evaluate the
+applicable authority/evidence; ConformanceReport remains the shared validation
+output boundary.
+
+The normative lifecycle reconciliation is documented in
+`docs/architecture/workflow-lifecycle.md`. It establishes that workflow state,
+record type, and governance status remain distinct, that timestamps and
+relations provide event linkage, and that the registry is not an execution
+runtime or orchestrator.
+
 ## Active Priorities
 
 | ID | Work | Priority | Status |
 | --- | --- | --- | --- |
 | A6.1 | Reconcile actual implemented registry surface | P0 | complete |
 | A6.2 | Formalize contract relationships and authority boundaries | P0 | complete |
-| A6.3 | Reconcile lifecycle/workflow semantics across GC contracts | P0 | next |
+| A6.3 | Reconcile lifecycle/workflow semantics across GC contracts | P0 | complete |
 | GC-SDK.02 | Keep `gc-validate` and `gc-report` stable for downstream tools | P0 | active |
 | GC-SDK.03 | Maintain package/release workflows | P1 | active |
 | GC-SDK.04 | Add SDK usage examples for GC adopters | P1 | planned |
@@ -99,7 +115,8 @@ same cross-platform workflow.
 
 ## Next architectural work
 
-A6.3 will reconcile the lifecycle/workflow semantics that connect governance
-records to the existing Governance Commons workflow architecture. It should
-reuse established POKEE/TBV and eco/LASSO concepts where they are applicable,
-without making the registry an execution runtime or orchestrator.
+A6.3 is complete. The next architectural work should build from the reconciled
+contract and lifecycle boundaries rather than introducing another parallel
+workflow model. Candidate follow-on work includes explicit workflow-to-record
+mapping guidance and broader contract parity where justified by actual adopter
+needs.
