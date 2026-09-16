@@ -1,0 +1,29 @@
+dossier_metadata:
+  dossier_version: 1.0.0
+  specification_version: 1.0.0
+  created_at: 2026-06-03T00:00:00Z
+  updated_at: 2026-06-03T00:00:00Z
+
+contract:
+  task_scope:
+    - Review artifacts.
+  deliverables:
+    - Findings.
+  acceptance_criteria:
+    - Findings reference evidence.
+
+constraints:
+  - Do not fabricate evidence.
+
+resource_budget:
+  retry_limit: 2
+  escalation_threshold: Escalate when blocked.
+
+tool_permissions: []
+
+escalation_protocol:
+  default_level: 0
+  levels:
+    - level: 0
+      trigger: Ambiguity.
+      action: Continue with assumptions.

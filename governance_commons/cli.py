@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 from .capabilities import CAPABILITY_CONTRACT_VERSION, validate_capability_contract
+from .dossier import DOSSIER_SPEC_VERSION, validate_dossier_contract
 from .ons import ONS_SPEC_VERSION, validate_name
 from .report import ConformanceReport, RuleResult, build_report
 
@@ -93,6 +94,31 @@ def _validate_capabilities(subject: str, profile: str) -> ConformanceReport:
     )
 
 
+def _validate_dossier(subject: str, profile: str) -> ConformanceReport:
+    result = validate_dossier_contract(subject)
+    if result.valid:
+        rules = [RuleResult(
+            rule_id="GC-DOSSIER-SCHEMA-000",
+            description="Agent dossier instance satisfies v1.4.0 structure",
+            result="pass",
+        )]
+    else:
+        rules = [RuleResult(
+            rule_id=issue.rule_id,
+            description=f"Agent dossier issue at {issue.path}",
+            result="fail",
+            message=issue.message,
+        ) for issue in result.issues]
+
+    return build_report(
+        spec="dossier",
+        spec_version=DOSSIER_SPEC_VERSION,
+        profile=profile,  # type: ignore[arg-type]
+        subject=subject,
+        rules=rules,
+    )
+
+
 def _print_text(report: ConformanceReport) -> None:
     status = "PASS" if report.conformant else "FAIL"
     print(f"GC Conformance Report")
@@ -116,7 +142,7 @@ def validate_cmd() -> None:
         prog="gc-validate",
         description="Validate a subject against a Governance Commons spec.",
     )
-    parser.add_argument("--spec", required=True, choices=["ons", "capabilities"],
+    parser.add_argument("--spec", required=True, choices=["ons", "capabilities", "dossier"],
                         help="Spec to validate against.")
     parser.add_argument("--profile", default="standard",
                         choices=["advisory", "standard", "strict"],
@@ -130,6 +156,8 @@ def validate_cmd() -> None:
         report = _validate_ons(args.subject, args.profile)
     elif args.spec == "capabilities":
         report = _validate_capabilities(args.subject, args.profile)
+    elif args.spec == "dossier":
+        report = _validate_dossier(args.subject, args.profile)
     else:
         print(f"gc-validate: unsupported spec '{args.spec}'", file=sys.stderr)
         sys.exit(2)

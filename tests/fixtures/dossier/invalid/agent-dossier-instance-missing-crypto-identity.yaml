@@ -1,0 +1,44 @@
+dossier_metadata:
+  dossier_version: 1.0.0
+  specification_version: 1.3.0
+  status: active
+  created_at: 2026-06-07T00:00:00Z
+  updated_at: 2026-06-07T00:00:00Z
+
+identity:
+  agent_id: example-broken-agent
+  display_name: Example Broken Agent
+  agent_class: implementation
+  authority_scope:
+    - generic tasks
+  crypto_identity: {}
+
+# INVALID REASON:
+# crypto_identity is present but empty — neither did nor public_key is provided.
+# The anyOf constraint requires at least one of: required ["did"] or required ["public_key"].
+# An empty crypto_identity object fails both branches and MUST be rejected.
+
+contract:
+  task_scope:
+    - Example task.
+  deliverables:
+    - Example deliverable.
+  acceptance_criteria:
+    - Example criterion.
+  lifecycle_state: accepted
+
+constraints:
+  - Example constraint.
+
+resource_budget:
+  retry_limit: 1
+  escalation_threshold: Escalate on any error.
+
+tool_permissions: []
+
+escalation_protocol:
+  default_level: 0
+  levels:
+    - level: 0
+      trigger: Any error.
+      action: Stop.

@@ -1,0 +1,68 @@
+dossier_metadata:
+  dossier_version: 1.0.0
+  specification_version: 1.0.0
+  status: active
+  created_at: 2026-06-03T00:00:00Z
+  updated_at: 2026-06-03T00:00:00Z
+
+identity:
+  agent_id: example-review-agent
+  display_name: Example Review Agent
+  agent_class: review
+  authority_scope:
+    - generic artifact review
+    - standards conformance review
+  capability_claims:
+    - capability: standards-conformance-review
+      declared_at: 2026-06-09T02:35:47Z
+      scope:
+        - generic artifacts
+      source: agent-dossier.yaml#identity_block.capability_claims
+  owner:
+    organization: Example Organization
+    contact: review-team@example.com
+  crypto_identity:
+    did: did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK
+
+contract:
+  task_scope:
+    - Review generic artifacts for conformance with declared standards.
+  deliverables:
+    - Structured findings report.
+    - Verification notes.
+  acceptance_criteria:
+    - Findings are evidence-based.
+    - Non-compliance is mapped to a rule or requirement.
+  non_goals:
+    - Project-specific implementation review.
+  lifecycle_state: accepted
+
+constraints:
+  - Do not introduce project-specific requirements.
+  - Do not fabricate verification evidence.
+  - Preserve provenance of reviewed artifacts.
+
+resource_budget:
+  retry_limit: 2
+  escalation_threshold: Escalate when required evidence is unavailable after bounded review.
+
+tool_permissions:
+  - tool_name: generic.reader
+    permission: read
+    scope:
+      - provided artifacts
+    approval_required: false
+    audit_required: true
+
+escalation_protocol:
+  default_level: 0
+  levels:
+    - level: 0
+      trigger: Recoverable ambiguity or low-risk uncertainty.
+      action: Continue with documented assumptions.
+    - level: 2
+      trigger: Missing required evidence or decision cannot be inferred safely.
+      action: Request operator clarification.
+    - level: 3
+      trigger: Safety, security, or compliance risk prevents continuation.
+      action: Stop and preserve audit trail.

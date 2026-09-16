@@ -19,6 +19,7 @@ helpers for Python and TypeScript/JavaScript adopters.
 | CLI wrappers | Implemented | `gc-validate`, `gc-report` |
 | Capability Contract v0.1 validation | Implemented in Python v0.2.0 | `governance_commons/capabilities.py`, bundled schema |
 | Capability provider discovery | Implemented in Python v0.2.0 | `gc-discover`; explicit repository roots, exact-ID query |
+| Agent Dossier instance validation (`--spec dossier`) | Implemented in Python (structural, v1.4.0 instance schema) | `governance_commons/dossier.py`, bundled `agent-dossier-instance.schema.json`, 6 tests against real agent-dossier fixtures; TypeScript parity not yet done |
 | Tests | Implemented | `tests/`, `npm test` |
 | Registry publication | Planned | PyPI/npm publication pending |
 

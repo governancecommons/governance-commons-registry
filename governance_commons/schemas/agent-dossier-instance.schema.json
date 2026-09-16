@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://governancecommons.org/agent-dossier/v/1.0.2/schemas/agent-dossier-instance.schema.json",
+  "title": "Agent Dossier Instance",
+  "description": "A conforming agent dossier instance declaring the identity, contract, constraints, permissions, and escalation protocol for a single agent.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "dossier_metadata",
+    "identity",
+    "contract",
+    "constraints",
+    "resource_budget",
+    "tool_permissions",
+    "escalation_protocol"
+  ],
+  "properties": {
+    "dossier_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dossier_version", "specification_version", "created_at", "updated_at"],
+      "properties": {
+        "dossier_version": { "$ref": "#/$defs/semver" },
+        "specification_version": { "$ref": "#/$defs/semver" },
+        "status": { "enum": ["draft", "active", "suspended", "revoked", "expired", "deprecated", "retired"] },
+        "created_at": { "$ref": "#/$defs/rfc3339_utc" },
+        "updated_at": { "$ref": "#/$defs/rfc3339_utc" },
+        "valid_until": { "$ref": "#/$defs/rfc3339_utc" },
+        "revocation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["revoked_at", "revocation_reason", "revoked_by"],
+          "properties": {
+            "revoked_at": { "$ref": "#/$defs/rfc3339_utc" },
+            "revocation_reason": {
+              "enum": ["decommissioned", "compromised", "authority_withdrawn", "superseded", "policy_violation"]
+            },
+            "revoked_by": { "type": "string", "minLength": 1 },
+            "superseded_by": { "$ref": "#/$defs/agent_id" }
+          }
+        }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["agent_id", "display_name", "agent_class", "authority_scope"],
+      "properties": {
+        "agent_id": { "$ref": "#/$defs/agent_id" },
+        "display_name": { "type": "string", "minLength": 1 },
+        "agent_class": {
+          "enum": [
+            "authoring",
+            "planning",
+            "implementation",
+            "review",
+            "testing",
+            "orchestration",
+            "research",
+            "operations",
+            "compliance"
+          ]
+        },
+        "authority_scope": { "$ref": "#/$defs/non_empty_string_list" },
+        "capability_claims": {
+          "type": "array",
+          "description": "Versioned capability declarations for audit replay. Each claim records the capability and the timestamp when it was declared.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["capability", "declared_at"],
+            "properties": {
+              "capability": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Stable human-readable capability name or profile identifier."
+              },
+              "declared_at": {
+                "$ref": "#/$defs/rfc3339_utc",
+                "description": "RFC3339 UTC timestamp when this capability claim was declared."
+              },
+              "scope": { "$ref": "#/$defs/non_empty_string_list" },
+              "source": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Optional source artifact, profile, or policy basis for the claim."
+              }
+            }
+          }
+        },
+        "owner": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "organization": { "type": "string", "minLength": 1 },
+            "contact": { "type": "string", "minLength": 1 }
+          }
+        },
+        "crypto_identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Cryptographic identity binding. At least one of did or public_key MUST be present. Enables signature verification on handoff envelopes and zero-trust peer authentication.",
+          "properties": {
+            "did": {
+              "type": "string",
+              "description": "DID URI for this agent. SHOULD use did:key method with Ed25519.",
+              "pattern": "^did:[a-z]+:[a-zA-Z0-9._:%-]+"
+            },
+            "public_key": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Bare Ed25519 public key when DID infrastructure is not available.",
+              "required": ["algorithm", "encoding", "value"],
+              "properties": {
+                "algorithm": { "type": "string", "const": "Ed25519" },
+                "encoding": {
+                  "type": "string",
+                  "const": "base58btc",
+                  "description": "Multibase encoding scheme. MUST be base58btc (prefix z)."
+                },
+                "value": {
+                  "type": "string",
+                  "pattern": "^z[1-9A-HJ-NP-Za-km-z]+",
+                  "description": "Multibase-encoded Ed25519 public key bytes (z prefix for base58btc)."
+                }
+              }
+            }
+          },
+          "anyOf": [
+            { "required": ["did"] },
+            { "required": ["public_key"] }
+          ]
+        }
+      }
+    },
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["task_scope", "deliverables", "acceptance_criteria"],
+      "properties": {
+        "task_scope": { "$ref": "#/$defs/non_empty_string_list" },
+        "deliverables": { "$ref": "#/$defs/non_empty_string_list" },
+        "acceptance_criteria": { "$ref": "#/$defs/non_empty_string_list" },
+        "dependencies": { "$ref": "#/$defs/string_list" },
+        "non_goals": { "$ref": "#/$defs/string_list" },
+        "review_requirements": { "$ref": "#/$defs/string_list" },
+        "lifecycle_state": {
+          "enum": [
+            "proposed",
+            "accepted",
+            "in_progress",
+            "blocked",
+            "handed_off",
+            "completed",
+            "cancelled"
+          ]
+        }
+      }
+    },
+    "constraints": { "$ref": "#/$defs/non_empty_string_list" },
+    "resource_budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["retry_limit", "escalation_threshold"],
+      "properties": {
+        "retry_limit": { "type": "integer", "minimum": 0 },
+        "escalation_threshold": { "type": "string", "minLength": 1 },
+        "time_limit": { "type": "string", "minLength": 1 },
+        "token_limit": { "type": "integer", "minimum": 0 },
+        "tool_call_limit": { "type": "integer", "minimum": 0 },
+        "cost_limit": { "type": "string", "minLength": 1 }
+      }
+    },
+    "tool_permissions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/tool_permission" }
+    },
+    "escalation_protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["default_level", "levels"],
+      "properties": {
+        "default_level": { "type": "integer", "minimum": 0 },
+        "levels": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["level", "trigger", "action"],
+            "properties": {
+              "level": { "type": "integer", "minimum": 0 },
+              "trigger": { "type": "string", "minLength": 1 },
+              "action": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "agent_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:[-+][0-9A-Za-z.-]+)?$"
+    },
+    "rfc3339_utc": {
+      "type": "string",
+      "description": "UTC timestamp at whole-second precision. Fractional seconds are intentionally rejected for deterministic canonical output.",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "non_empty_string_list": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "string_list": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "tool_permission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tool_name", "permission", "scope", "approval_required", "audit_required"],
+      "properties": {
+        "tool_name": { "type": "string", "minLength": 1 },
+        "permission": { "enum": ["deny", "read", "write", "execute", "administer"] },
+        "scope": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "approval_required": { "type": "boolean" },
+        "audit_required": { "type": "boolean" }
+      }
+    }
+  }
+}
