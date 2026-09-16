@@ -52,9 +52,6 @@ class SpecVersion:
     def __gt__(self, other: "SpecVersion") -> bool:
         return (self.major, self.minor, self.patch) > (other.major, other.minor, other.patch)
 
-    def __str__(self) -> str:
-        return f"{self.major}.{self.minor}.{self.patch}"
-
 
 # These are the versions the current reference validators are built against.
 SUPPORTED_SPEC_VERSIONS: dict[str, str] = {
@@ -83,9 +80,11 @@ def classify_spec_version(spec: str, declared_version: str) -> CompatibilityStat
     declared = SpecVersion.parse(declared_version)
     if current is None or declared is None:
         return CompatibilityStatus.INVALID
-    if declared == current:
+    current_tuple = (current.major, current.minor, current.patch)
+    declared_tuple = (declared.major, declared.minor, declared.patch)
+    if declared_tuple == current_tuple:
         return CompatibilityStatus.CURRENT
-    if declared > current:
+    if declared_tuple > current_tuple:
         return CompatibilityStatus.UNSUPPORTED_FUTURE
 
     if current.major == 0:
@@ -102,7 +101,12 @@ def classify_spec_version(spec: str, declared_version: str) -> CompatibilityStat
 
 
 def compatibility_rule(spec: str, declared_version: str) -> RuleResult:
-    """Return a deterministic conformance rule for a declared spec version."""
+    """Return a deterministic compatibility rule result.
+
+    An older-compatible classification is reported as ``skip`` rather than a
+    pass because version compatibility alone does not prove that the current
+    schema can validate the historical version.
+    """
     status = classify_spec_version(spec, declared_version)
     current = SUPPORTED_SPEC_VERSIONS.get(spec)
 
@@ -116,9 +120,9 @@ def compatibility_rule(spec: str, declared_version: str) -> RuleResult:
     if status is CompatibilityStatus.COMPATIBLE_OLDER:
         return RuleResult(
             "GC-SDK-COMPAT-001",
-            "Declared specification version is supported by this SDK",
-            "pass",
-            f"{spec} {declared_version} is an older version-compatible release; no schema fallback is implied",
+            "Declared specification version is version-compatible with this SDK",
+            "skip",
+            f"{spec} {declared_version} is older but version-compatible; schema compatibility must be established separately",
         )
     if status is CompatibilityStatus.UNSUPPORTED_FUTURE:
         return RuleResult(
