@@ -1,0 +1,16 @@
+schema_version: "0.1"
+component:
+  id: example-provider
+  name: Example Capability Provider
+  type: service
+  version: "1.0.0"
+  status: active
+provides:
+  - id: asset.palette.generate
+    version: "1.0"
+    stability: stable
+    summary: Generate a deterministic asset palette.
+    interfaces:
+      - api.asset.palette.generate
+metadata:
+  repository: example/provider
