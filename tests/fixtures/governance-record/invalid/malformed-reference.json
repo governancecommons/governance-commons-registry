@@ -1,0 +1,1 @@
+{"record_id":"invalid.006","record_type":"observation","schema_version":"1.0.0","subject":{"type":"task"},"actor":{"type":"agent","id":"agent.example"},"timestamps":{"created_at":"2026-09-16T16:00:00Z","occurred_at":"2026-09-16T16:00:00Z"}}

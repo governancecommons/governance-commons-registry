@@ -1,0 +1,1 @@
+{"record_id":"gr.escalation.001","record_type":"escalation","schema_version":"1.0.0","actor":{"type":"agent","id":"agent.example"},"escalation":{"reason":"Requires human decision.","target":{"type":"human","id":"human.example"}},"timestamps":{"created_at":"2026-09-16T15:21:00Z","occurred_at":"2026-09-16T15:21:00Z"}}

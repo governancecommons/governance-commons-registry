@@ -1,0 +1,1 @@
+{"record_id":"invalid.005","record_type":"action","schema_version":"1.0.0","subject":{"type":"task","id":"task.example.001"},"actor":{"type":"agent","id":"agent.example"},"authority":{"basis":"delegation","authority_id":"authority.example","status":"active"},"timestamps":{"created_at":"2026-09-16T16:00:00Z","occurred_at":"2026-09-16T16:00:00Z"}}

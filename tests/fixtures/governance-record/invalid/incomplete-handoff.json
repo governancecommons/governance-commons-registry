@@ -1,0 +1,1 @@
+{"record_id":"invalid.004","record_type":"handoff","schema_version":"1.0.0","actor":{"type":"orchestrator","id":"orchestrator.a"},"subject":{"type":"task","id":"task.example.001"},"handoff":{"from":{"type":"orchestrator","id":"orchestrator.a"},"status":"accepted"},"timestamps":{"created_at":"2026-09-16T16:00:00Z","occurred_at":"2026-09-16T16:00:00Z"}}

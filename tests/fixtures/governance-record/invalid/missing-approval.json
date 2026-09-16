@@ -1,0 +1,1 @@
+{"record_id":"invalid.003","record_type":"approval","schema_version":"1.0.0","actor":{"type":"human","id":"human.example"},"subject":{"type":"action","id":"action.example.001"},"timestamps":{"created_at":"2026-09-16T16:00:00Z","occurred_at":"2026-09-16T16:00:00Z"}}
