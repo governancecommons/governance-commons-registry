@@ -1,0 +1,33 @@
+schema_version: "0.1"
+component:
+  id: governance-commons-registry
+  name: Governance Commons Registry
+  type: sdk
+  version: "0.2.0"
+  status: active
+provides:
+  - id: governance.contract.validate
+    version: "0.1"
+    stability: stable
+    summary: Validate Governance Commons contract declarations against their supported specification.
+    interfaces:
+      - python.governance_commons.capabilities.validate_capability_contract
+      - cli.gc-validate
+    side_effects: []
+    tags:
+      - validation
+      - governance
+  - id: governance.capability.discover
+    version: "0.1"
+    stability: stable
+    summary: Discover validated Capability Contract providers from explicit repository roots.
+    interfaces:
+      - python.governance_commons.capabilities.discover_capabilities
+      - cli.gc-discover
+    side_effects: []
+    tags:
+      - discovery
+      - capabilities
+metadata:
+  repository: governancecommons/governance-commons-registry
+  docs: docs/capability-adoption.md
