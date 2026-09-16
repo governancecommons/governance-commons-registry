@@ -1,0 +1,22 @@
+schema_version: "0.1"
+component:
+  id: example-hybrid
+  name: Example Provider Consumer
+  type: service
+  version: "2.0.0"
+  status: active
+provides:
+  - id: asset.palette.generate
+    version: "2.0"
+    stability: preview
+    summary: Generate a deterministic asset palette.
+    interfaces:
+      - api.asset.palette.generate
+consumes:
+  - id: governance.artifact.validate
+    requirement: optional
+    version: "^1.0"
+    reason: Validation is used when available for artifact checks.
+prohibits:
+  - capability: release.package.publish
+    reason: Publishing remains outside this component boundary.
