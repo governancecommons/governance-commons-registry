@@ -58,6 +58,10 @@ def test_compatibility_rule_uses_shared_rule_result_shape() -> None:
     assert current.rule_id == "GC-SDK-COMPAT-001"
     assert current.result == "pass"
 
+    older = compatibility_rule("ons", "1.3.0")
+    assert older.result == "skip"
+    assert "schema compatibility" in (older.message or "")
+
     future = compatibility_rule("governance-record", "2.0.0")
     assert future.result == "fail"
     assert "newer" in (future.message or "")
