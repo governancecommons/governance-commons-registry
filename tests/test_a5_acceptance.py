@@ -66,6 +66,7 @@ def test_a5_governance_rule_fixtures_separate_structure_from_semantics() -> None
     expected_failures = {
         "unauthorized-action.json": "GR-AUTH-001",
         "revoked-authority-action.json": "GR-AUTH-002",
+        "revocation-mismatched-target.json": "GR-AUTH-003",
         "incomplete-handoff.json": "GR-HANDOFF-001",
     }
     for filename, rule_id in expected_failures.items():
