@@ -35,9 +35,14 @@ def main() -> None:
             f"release version mismatch: metadata={python_version}, expected={expected_version}"
         )
 
+    ref_type = os.environ.get("GITHUB_REF_TYPE")
     ref_name = os.environ.get("GITHUB_REF_NAME")
-    if ref_name:
-        match = re.fullmatch(r"sdk-v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)", ref_name)
+    if ref_type == "tag":
+        if not ref_name:
+            raise SystemExit("release tag ref is missing")
+        match = re.fullmatch(
+            r"sdk-v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)", ref_name
+        )
         if not match:
             raise SystemExit(f"invalid SDK release tag: {ref_name}")
         tag_version = ref_name.removeprefix("sdk-v")
