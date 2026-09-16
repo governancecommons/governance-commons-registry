@@ -35,6 +35,7 @@ The explicit workflow-to-record bridge is normative in
 | A5 Governance Record acceptance gate | Implemented | `tests/test_a5_acceptance.py` |
 | Cross-platform clean-artifact CI | Implemented | `.github/workflows/` |
 | Python/TypeScript adopter examples | Implemented | `examples/` |
+| Specification compatibility policy | Implemented | `governance_commons/compatibility.py`, `docs/compatibility-policy.md` |
 | TypeScript parity for Dossier/Capability/Governance Record | Not yet implemented | Deliberate current asymmetry |
 | Agent Matrix validator | Not implemented in this repo | Separate contract/workstream |
 | Project Orchestrator validator | Not implemented in this repo | Separate contract/workstream |
@@ -82,7 +83,7 @@ runtime or orchestrator.
 | GC-SDK.02 | Keep `gc-validate` and `gc-report` stable for downstream tools | P0 | active |
 | GC-SDK.03 | Maintain package/release workflows | P1 | active |
 | GC-SDK.04 | Add SDK usage examples for GC adopters | P1 | complete |
-| GC-SDK.05 | Define compatibility policy for spec versions | P1 | planned |
+| GC-SDK.05 | Define compatibility policy for spec versions | P1 | complete |
 | GC-SDK.07 | Capability Contract v0.1 adoption beyond MVP | P1 | active |
 
 ## Validation
@@ -114,6 +115,11 @@ Adopter examples in `examples/` use the existing public SDK/validator surfaces
 and existing representative fixtures; they do not define parallel schemas or
 runtime behavior.
 
+Specification compatibility is documented in `docs/compatibility-policy.md`
+and implemented by `governance_commons.compatibility`. SDK/package versions are
+independent of specification versions; compatibility is explicit and never
+implies silent schema fallback.
+
 ## Cross-Platform Release Gate
 
 The repository uses a 3-OS × 3-runtime matrix: Python 3.11/3.12/3.13 and Node
@@ -123,8 +129,8 @@ same cross-platform workflow.
 
 ## Next architectural work
 
-A6.4 and GC-SDK.04 are complete. The next work should preserve the reconciled
-contract and workflow boundaries. The immediate planned follow-on is GC-SDK.05,
-a compatibility policy for relationships among SDK/package versions and
-Governance Commons specification versions, unless adopter evidence causes a
-higher-priority stability or adoption issue to supersede it.
+A6.4, GC-SDK.04, and GC-SDK.05 are complete. No new lifecycle or authority
+layer is introduced by the compatibility policy. Continue the active SDK
+stability/release work (GC-SDK.02/03) and Capability Contract adoption
+(GC-SDK.07), using the compatibility policy as the version boundary for future
+specification and package releases.

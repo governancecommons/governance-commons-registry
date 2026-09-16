@@ -1,0 +1,5 @@
+{
+  "spec": "governance-record",
+  "declared_version": "0.9.0",
+  "expected": "incompatible_older"
+}
