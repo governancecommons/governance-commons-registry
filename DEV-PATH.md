@@ -34,8 +34,8 @@ Capability Contract, Agent Dossier, or Governance Record.
 
 The package version boundary is separate from specification versions. For
 pre-1.0 package versions, a minor version is a compatibility boundary; SDK 0.2
-therefore does not silently promise compatibility with npm 0.1.x. Existing
-public ONS/report exports remain available, and the Python package additionally
+does not silently promise compatibility with npm 0.1.x. Existing public
+ONS/report exports remain available, and the Python package additionally
 exposes the validators already implemented in the repository.
 
 See `docs/sdk-0.2-acceptance.md` for the inspectable acceptance criteria.
@@ -58,7 +58,7 @@ and local checkout are used consistently.
 
 | ID | Status | Notes |
 | --- | --- | --- |
-| GC-SDK.02 | active | Stabilize `gc-validate` / `gc-report` behavior and shared report output; SDK 0.2 acceptance work is in progress. |
+| GC-SDK.02 | complete | CLI/report behavior locked with cross-language acceptance coverage and explicit report-version rejection. |
 | GC-SDK.03 | active | Maintain package/release workflows; publication remains a separate release decision. |
 | GC-SDK.04 | complete | Added minimal adopter examples for Python and TypeScript. |
 | GC-SDK.05 | complete | Defined specification compatibility policy. |

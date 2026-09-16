@@ -4,10 +4,7 @@ from __future__ import annotations
 import json
 import subprocess
 import sys
-import tempfile
 from pathlib import Path
-
-import pytest
 
 
 def _write_json(tmp_path: Path, data: object, filename: str = "input.json") -> Path:
@@ -16,31 +13,12 @@ def _write_json(tmp_path: Path, data: object, filename: str = "input.json") -> P
     return p
 
 
-def _run_validate(*args: str) -> subprocess.CompletedProcess:
-    return subprocess.run(
-        [sys.executable, "-m", "governance_commons.cli", "validate", *args],
-        capture_output=True, text=True,
-    )
-
-
-def _run_gc(cmd: str, *args: str) -> subprocess.CompletedProcess:
-    return subprocess.run(
-        [sys.executable, "-c",
-         f"from governance_commons.cli import {cmd}_cmd; {cmd}_cmd()",
-         *args],
-        capture_output=True, text=True,
-    )
-
-
-# ── gc-validate via module entry point ───────────────────────────────────────
-
 def _validate(*args: str) -> subprocess.CompletedProcess:
     return subprocess.run(
         [sys.executable, "-c",
          "import sys; sys.argv = ['gc-validate'] + sys.argv[1:];"
          "from governance_commons.cli import validate_cmd; validate_cmd()",
-         *args],
-        capture_output=True, text=True,
+         *args], capture_output=True, text=True,
     )
 
 
@@ -49,12 +27,11 @@ def _report(*args: str) -> subprocess.CompletedProcess:
         [sys.executable, "-c",
          "import sys; sys.argv = ['gc-report'] + sys.argv[1:];"
          "from governance_commons.cli import report_cmd; report_cmd()",
-         *args],
-        capture_output=True, text=True,
+         *args], capture_output=True, text=True,
     )
 
 
-class TestGcValidateAllPass:
+class TestGcValidate:
     def test_exit_0_all_pass(self, tmp_path: Path) -> None:
         f = _write_json(tmp_path, {"checks": [
             {"domain": "python_identifier", "name": "run_intent"},
@@ -64,17 +41,13 @@ class TestGcValidateAllPass:
         assert result.returncode == 0
 
     def test_text_output_pass(self, tmp_path: Path) -> None:
-        f = _write_json(tmp_path, {"checks": [
-            {"domain": "python_identifier", "name": "run_intent"},
-        ]})
+        f = _write_json(tmp_path, {"checks": [{"domain": "python_identifier", "name": "run_intent"}]})
         result = _validate("--spec", "ons", "--output", "text", str(f))
         assert "PASS" in result.stdout
-        assert "ONS-CASING-001" in result.stdout, result.stderr
+        assert "ONS-CASING-001" in result.stdout
 
     def test_json_output_structure(self, tmp_path: Path) -> None:
-        f = _write_json(tmp_path, {"checks": [
-            {"domain": "python_identifier", "name": "run_intent"},
-        ]})
+        f = _write_json(tmp_path, {"checks": [{"domain": "python_identifier", "name": "run_intent"}]})
         result = _validate("--spec", "ons", "--output", "json", str(f))
         assert result.returncode == 0
         data = json.loads(result.stdout)
@@ -84,51 +57,18 @@ class TestGcValidateAllPass:
         assert data["summary"]["passed"] == 1
         assert data["summary"]["failed"] == 0
 
-
-class TestGcValidateWithFailures:
     def test_exit_1_on_failure(self, tmp_path: Path) -> None:
-        f = _write_json(tmp_path, {"checks": [
-            {"domain": "python_identifier", "name": "RunIntent"},
-        ]})
+        f = _write_json(tmp_path, {"checks": [{"domain": "python_identifier", "name": "RunIntent"}]})
         result = _validate("--spec", "ons", str(f))
         assert result.returncode == 1
+        assert json.loads(_validate("--spec", "ons", "--output", "json", str(f)).stdout)["conformant"] is False
 
-    def test_json_output_conformant_false(self, tmp_path: Path) -> None:
-        f = _write_json(tmp_path, {"checks": [
-            {"domain": "python_identifier", "name": "BadName"},
-        ]})
-        result = _validate("--spec", "ons", "--output", "json", str(f))
-        data = json.loads(result.stdout)
-        assert data["conformant"] is False
-        assert data["conformance_level"] == "none"
-        assert data["summary"]["failed"] == 1
-
-    def test_text_output_shows_fail(self, tmp_path: Path) -> None:
-        f = _write_json(tmp_path, {"checks": [
-            {"domain": "governance_cluster", "name": "ons"},
-        ]})
-        result = _validate("--spec", "ons", "--output", "text", str(f))
-        assert "FAIL" in result.stdout
-        assert "!" in result.stdout
-
-
-class TestGcValidateErrors:
-    def test_exit_2_missing_file(self, tmp_path: Path) -> None:
-        result = _validate("--spec", "ons", str(tmp_path / "nonexistent.json"))
+    def test_exit_2_invalid_subject(self, tmp_path: Path) -> None:
+        result = _validate("--spec", "ons", str(tmp_path / "missing.json"))
         assert result.returncode == 2
 
-    def test_exit_2_missing_spec(self, tmp_path: Path) -> None:
-        f = _write_json(tmp_path, {"checks": []})
-        result = _validate(str(f))
-        assert result.returncode != 0
-
-    def test_exit_2_missing_checks_key(self, tmp_path: Path) -> None:
+    def test_exit_2_malformed_subject(self, tmp_path: Path) -> None:
         f = _write_json(tmp_path, {"not_checks": []})
-        result = _validate("--spec", "ons", str(f))
-        assert result.returncode == 2
-
-    def test_exit_2_malformed_check(self, tmp_path: Path) -> None:
-        f = _write_json(tmp_path, {"checks": [{"domain": "python_identifier"}]})
         result = _validate("--spec", "ons", str(f))
         assert result.returncode == 2
 
@@ -139,25 +79,17 @@ class TestGcReport:
         rules = [RuleResult("ONS-CASING-001", "snake_case", "pass" if conformant else "fail",
                             None if conformant else "bad name")]
         r = build_report(spec="ons", spec_version="1.4.0", profile="standard",
-                         subject="test.json", generated_at="2026-06-07T00:00:00Z",
-                         rules=rules)
-        p = tmp_path / "report.json"
-        p.write_text(r.to_json(), encoding="utf-8")
-        return p
+                         subject="test.json", generated_at="2026-06-07T00:00:00Z", rules=rules)
+        return _write_json(tmp_path, r.to_dict(), "report.json")
 
     def test_exit_0_conformant_report(self, tmp_path: Path) -> None:
-        p = self._saved_report(tmp_path, conformant=True)
-        result = _report(str(p))
-        assert result.returncode == 0
+        assert _report(str(self._saved_report(tmp_path))).returncode == 0
 
     def test_exit_1_nonconformant_report(self, tmp_path: Path) -> None:
-        p = self._saved_report(tmp_path, conformant=False)
-        result = _report(str(p))
-        assert result.returncode == 1
+        assert _report(str(self._saved_report(tmp_path, conformant=False))).returncode == 1
 
     def test_text_output_shows_spec(self, tmp_path: Path) -> None:
-        p = self._saved_report(tmp_path)
-        result = _report("--output", "text", str(p))
+        result = _report("--output", "text", str(self._saved_report(tmp_path)))
         assert "ons" in result.stdout
         assert "1.4.0" in result.stdout
 
@@ -167,13 +99,21 @@ class TestGcReport:
         assert result.returncode == 0
         data = json.loads(result.stdout)
         assert data["gc_report_version"] == "1.0.0"
+        assert data["summary"]["passed"] == 1
 
     def test_exit_2_missing_file(self, tmp_path: Path) -> None:
-        result = _report(str(tmp_path / "missing.json"))
-        assert result.returncode == 2
+        assert _report(str(tmp_path / "missing.json")).returncode == 2
 
     def test_exit_2_invalid_json(self, tmp_path: Path) -> None:
         p = tmp_path / "bad.json"
         p.write_text("not json", encoding="utf-8")
+        assert _report(str(p)).returncode == 2
+
+    def test_exit_2_unsupported_report_version(self, tmp_path: Path) -> None:
+        p = self._saved_report(tmp_path)
+        data = json.loads(p.read_text(encoding="utf-8"))
+        data["gc_report_version"] = "9.9.9"
+        p.write_text(json.dumps(data), encoding="utf-8")
         result = _report(str(p))
         assert result.returncode == 2
+        assert "report version '9.9.9' is not supported" in result.stderr

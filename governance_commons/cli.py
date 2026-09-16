@@ -10,7 +10,7 @@ from .capabilities import CAPABILITY_CONTRACT_VERSION, validate_capability_contr
 from .dossier import DOSSIER_SPEC_VERSION, validate_dossier_contract
 from .governance_records import GOVERNANCE_RECORD_SPEC_VERSION, validate_governance_record_contract
 from .ons import ONS_SPEC_VERSION, validate_name
-from .report import ConformanceReport, RuleResult, ReportSummary, build_report
+from .report import GC_REPORT_VERSION, ConformanceReport, RuleResult, ReportSummary, build_report
 
 _ONS_RULE_IDS: dict[str, tuple[str, str]] = {
     "python_identifier": ("ONS-CASING-001", "Python identifiers must be snake_case"),
@@ -106,12 +106,17 @@ def report_cmd() -> None:
     args = parser.parse_args()
     try:
         data = json.loads(Path(args.report_file).read_text(encoding="utf-8"))
+        if data.get("gc_report_version") != GC_REPORT_VERSION:
+            raise ValueError(
+                f"report version '{data.get('gc_report_version')}' is not supported by this tool "
+                f"(expected '{GC_REPORT_VERSION}')"
+            )
         report = ConformanceReport(
             spec=data["spec"], spec_version=data["spec_version"], profile=data["profile"], subject=data["subject"],
             generated_at=data["generated_at"], rules=[RuleResult(**r) for r in data["rules"]],
             summary=ReportSummary(**data["summary"]), conformant=data["conformant"], conformance_level=data["conformance_level"],
         )
-    except (OSError, json.JSONDecodeError, KeyError, TypeError) as exc:
+    except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
         print(f"gc-report: malformed report file: {exc}", file=sys.stderr)
         raise SystemExit(2)
     print(report.to_json() if args.output == "json" else "") if args.output == "json" else _print_text(report)

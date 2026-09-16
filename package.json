@@ -2,67 +2,28 @@
   "name": "governance-commons",
   "version": "0.2.0",
   "description": "Governance Commons reference implementation — ONS validation, capability contracts, governance records, conformance reporting, and compatibility utilities for adopters.",
-  "keywords": [
-    "governance",
-    "naming",
-    "ons",
-    "ontic-namespace-structure",
-    "schema",
-    "validation",
-    "agent",
-    "capability",
-    "governance-record"
-  ],
+  "keywords": ["governance", "naming", "ons", "ontic-namespace-structure", "schema", "validation", "agent", "capability", "governance-record"],
   "license": "MIT",
   "author": "jj-ervin",
   "homepage": "https://github.com/governancecommons/governance-commons-registry",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/governancecommons/governance-commons-registry.git"
-  },
+  "repository": {"type": "git", "url": "git+https://github.com/governancecommons/governance-commons-registry.git"},
   "type": "module",
-  "bin": {
-    "gc-validate": "dist/esm/gc-validate.js",
-    "gc-report": "dist/esm/gc-report.js"
-  },
+  "bin": {"gc-validate": "dist/esm/gc-validate.js", "gc-report": "dist/esm/gc-report.js"},
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
   "exports": {
-    ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js",
-      "types": "./dist/types/index.d.ts"
-    },
-    "./ons": {
-      "import": "./dist/esm/ons.js",
-      "require": "./dist/cjs/ons.js",
-      "types": "./dist/types/ons.d.ts"
-    },
-    "./report": {
-      "import": "./dist/esm/report.js",
-      "require": "./dist/cjs/report.js",
-      "types": "./dist/types/report.d.ts"
-    }
+    ".": {"import": "./dist/esm/index.js", "require": "./dist/cjs/index.js", "types": "./dist/types/index.d.ts"},
+    "./ons": {"import": "./dist/esm/ons.js", "require": "./dist/cjs/ons.js", "types": "./dist/types/ons.d.ts"},
+    "./report": {"import": "./dist/esm/report.js", "require": "./dist/cjs/report.js", "types": "./dist/types/report.d.ts"}
   },
-  "files": [
-    "dist/cjs/",
-    "dist/esm/",
-    "dist/types/",
-    "README.md",
-    "LICENSE"
-  ],
+  "files": ["dist/cjs/", "dist/esm/", "dist/types/", "README.md", "LICENSE"],
   "scripts": {
     "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json",
     "typecheck": "tsc --noEmit",
-    "test": "npm run typecheck && npm run build && node tests/sdk-version.mjs",
+    "test": "npm run typecheck && npm run build && node tests/sdk-version.mjs && node tests/cli-acceptance.mjs",
     "prepack": "npm run build"
   },
-  "devDependencies": {
-    "@types/node": "^25.9.2",
-    "typescript": "^6.0.3"
-  },
-  "engines": {
-    "node": ">=18"
-  }
+  "devDependencies": {"@types/node": "^25.9.2", "typescript": "^6.0.3"},
+  "engines": {"node": ">=18"}
 }
