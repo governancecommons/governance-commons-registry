@@ -36,6 +36,7 @@ The explicit workflow-to-record bridge is normative in
 | Cross-platform clean-artifact CI | Implemented | `.github/workflows/` |
 | Python/TypeScript adopter examples | Implemented | `examples/` |
 | Specification compatibility policy | Implemented | `governance_commons/compatibility.py`, `docs/compatibility-policy.md` |
+| Package/release workflow gate | Implemented | `tests/release_acceptance.py`, `.github/workflows/main.yml`, `.github/workflows/publish-js.yml` |
 | TypeScript parity for Dossier/Capability/Governance Record | Not yet implemented | Deliberate current asymmetry |
 | Agent Matrix validator | Not implemented in this repo | Separate contract/workstream |
 | Project Orchestrator validator | Not implemented in this repo | Separate contract/workstream |
@@ -81,7 +82,7 @@ runtime or orchestrator.
 | A6.3 | Reconcile lifecycle/workflow semantics across GC contracts | P0 | complete |
 | A6.4 | Define explicit workflow-to-Governance Record mapping/bridge guidance | P0 | complete |
 | GC-SDK.02 | Keep `gc-validate` and `gc-report` stable for downstream tools | P0 | complete |
-| GC-SDK.03 | Maintain package/release workflows | P1 | active |
+| GC-SDK.03 | Maintain package/release workflows | P1 | complete |
 | GC-SDK.04 | Add SDK usage examples for GC adopters | P1 | complete |
 | GC-SDK.05 | Define compatibility policy for spec versions | P1 | complete |
 | GC-SDK.07 | Capability Contract v0.1 adoption beyond MVP | P1 | active |
@@ -95,6 +96,7 @@ python -m pytest -q
 npm test
 python -m build
 npm pack --dry-run
+python tests/release_acceptance.py
 ```
 
 Python validation currently supports:
@@ -126,12 +128,21 @@ The repository uses a 3-OS × 3-runtime matrix: Python 3.11/3.12/3.13 and Node
 18/20/22 on Ubuntu, macOS, and Windows. Jobs build and install clean artifacts
 and exercise validation/CLI behavior. A5 acceptance has been proven through the
 same cross-platform workflow. GC-SDK.02 adds explicit npm built-CLI acceptance
-and Python report-version boundary coverage.
+and Python report-version boundary coverage. GC-SDK.03 additionally checks that
+package metadata agrees across Python/npm and that release tags match metadata
+before publication.
+
+## Package Release Workflow
+
+`docs/sdk-0.2-release.md` documents the explicit release workflow. Tag-triggered
+publication uses `sdk-v<version>` and both package surfaces must agree on the
+version. Manual publication requires an explicit version input. Publication is
+not performed by the ordinary cross-platform CI workflow.
 
 ## Next architectural work
 
-A6.4, GC-SDK.02, GC-SDK.04, and GC-SDK.05 are complete. No new lifecycle or
-authority layer is introduced by the compatibility policy or CLI stabilization.
-Continue GC-SDK.03 package/release workflow maintenance and Capability Contract
+A6.4, GC-SDK.02, GC-SDK.03, GC-SDK.04, and GC-SDK.05 are complete. No new
+lifecycle or authority layer is introduced by the compatibility policy, CLI
+stabilization, or release workflow maintenance. Continue Capability Contract
 adoption (GC-SDK.07), using the compatibility policy as the version boundary
 for future specification and package releases.

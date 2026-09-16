@@ -28,6 +28,9 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install ".[dev]"
           python -m pytest -q
+      - name: Validate release metadata
+        shell: bash
+        run: SDK_VERSION="0.2.0" python tests/release_acceptance.py
       - name: Build clean artifacts
         run: python -m build --sdist --wheel
       - name: Install built wheel and smoke-test console scripts
@@ -50,6 +53,11 @@ jobs:
         run: |
           npm ci
           npm test
+      - name: Verify package metadata
+        shell: bash
+        run: |
+          test "$(node -p "require('./package.json').version")" = "0.2.0"
+          test "$(node -p "require('./package-lock.json').version")" = "0.2.0"
       - name: Pack and install registry-shaped artifact
         run: |
           node -e "require('node:fs').mkdirSync('artifacts', { recursive: true })"
