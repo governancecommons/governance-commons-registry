@@ -133,6 +133,62 @@ def _revocation_rule(data: dict[str, Any]) -> RuleResult:
     return RuleResult("GR-AUTH-002", "Revoked authority cannot authorize an action after revocation", "pass")
 
 
+def _revocation_evidence_rule(data: dict[str, Any]) -> RuleResult:
+    if data.get("record_type") != "revocation":
+        return RuleResult(
+            "GR-AUTH-003",
+            "Revocation records identify the authority being revoked and preserve effective-time evidence",
+            "pass",
+        )
+
+    subject = data.get("subject")
+    relations = data.get("relations")
+    timestamps = data.get("timestamps")
+    if not isinstance(subject, dict) or subject.get("type") != "authority" or not subject.get("id"):
+        return RuleResult(
+            "GR-AUTH-003",
+            "Revocation records identify the authority being revoked and preserve effective-time evidence",
+            "fail",
+            "revocation subject must identify the revoked authority",
+        )
+    if not isinstance(relations, list):
+        return RuleResult(
+            "GR-AUTH-003",
+            "Revocation records identify the authority being revoked and preserve effective-time evidence",
+            "fail",
+            "revocation record has no relations collection",
+        )
+
+    matching = [
+        relation
+        for relation in relations
+        if isinstance(relation, dict)
+        and relation.get("type") == "revokes"
+        and isinstance(relation.get("target"), dict)
+        and relation["target"].get("type") == "authority"
+        and relation["target"].get("id") == subject.get("id")
+    ]
+    if not matching:
+        return RuleResult(
+            "GR-AUTH-003",
+            "Revocation records identify the authority being revoked and preserve effective-time evidence",
+            "fail",
+            "revocation record must contain a revokes relation targeting its subject authority",
+        )
+    if not isinstance(timestamps, dict) or _parse_time(timestamps.get("occurred_at")) is None:
+        return RuleResult(
+            "GR-AUTH-003",
+            "Revocation records identify the authority being revoked and preserve effective-time evidence",
+            "fail",
+            "revocation record must contain a valid occurred_at timestamp",
+        )
+    return RuleResult(
+        "GR-AUTH-003",
+        "Revocation records identify the authority being revoked and preserve effective-time evidence",
+        "pass",
+    )
+
+
 def _handoff_rule(data: dict[str, Any]) -> RuleResult:
     handoff = data.get("handoff")
     if not isinstance(handoff, dict) or handoff.get("status") not in {"accepted", "completed"}:
@@ -203,7 +259,7 @@ def validate_governance_record_data(data: Any, *, subject: str = "<memory>", pro
     schema_rules = _schema_rules(data)
     rules = list(schema_rules)
     if schema_rules and all(r.result == "pass" for r in schema_rules) and isinstance(data, dict):
-        rules.extend([_auth_rule(data), _revocation_rule(data), _handoff_rule(data)])
+        rules.extend([_auth_rule(data), _revocation_rule(data), _revocation_evidence_rule(data), _handoff_rule(data)])
     return build_report(
         spec="governance-record",
         spec_version=GOVERNANCE_RECORD_SPEC_VERSION,

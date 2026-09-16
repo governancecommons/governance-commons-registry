@@ -1,0 +1,20 @@
+{
+  "record_id": "gr.revocation.example.002",
+  "record_type": "revocation",
+  "schema_version": "1.0.0",
+  "subject": {"type": "authority", "id": "authority.example.002"},
+  "actor": {"type": "human", "id": "human.example"},
+  "authority": {
+    "basis": "human_authorization",
+    "authority_id": "authority.revocation.002",
+    "status": "active"
+  },
+  "relations": [
+    {"type": "revokes", "target": {"type": "authority", "id": "authority.other"}}
+  ],
+  "lifecycle": {"status": "final", "reason": "Authority withdrawn by authorized human."},
+  "timestamps": {
+    "created_at": "2026-09-16T16:10:00Z",
+    "occurred_at": "2026-09-16T16:10:00Z"
+  }
+}
