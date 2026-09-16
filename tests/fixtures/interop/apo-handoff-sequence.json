@@ -1,0 +1,39 @@
+{
+  "source": {"system": "agent-project-orchestrator", "version": "1.4.0"},
+  "matrix_binding": {"matrix_version": "1.6.0", "route_owner": "agent-matrix"},
+  "task_id": "task:interop-001",
+  "participants": ["agent:orchestrator", "agent:coder", "agent:reviewer"],
+  "events": [
+    {
+      "event_type": "handoff",
+      "event_id": "evt-001",
+      "task_id": "task:interop-001",
+      "agent_id": "agent:orchestrator",
+      "timestamp": "2026-09-16T23:00:00Z",
+      "summary": "Handoff issued to reviewer",
+      "handoff_envelope": {
+        "envelope_id": "agent_handoff:00000000-0000-4000-8000-000000000001",
+        "from_agent": "agent:orchestrator",
+        "to_agent": "agent:reviewer"
+      }
+    },
+    {
+      "event_type": "handoff",
+      "event_id": "evt-002",
+      "task_id": "task:interop-001",
+      "agent_id": "agent:reviewer",
+      "timestamp": "2026-09-16T23:00:05Z",
+      "handoff_status": "accepted",
+      "summary": "Reviewer accepted handoff"
+    },
+    {
+      "event_type": "escalation",
+      "event_id": "evt-003",
+      "task_id": "task:interop-001",
+      "agent_id": "agent:reviewer",
+      "timestamp": "2026-09-16T23:01:00Z",
+      "reason": "requires_human_review",
+      "summary": "Escalated for human review"
+    }
+  ]
+}
