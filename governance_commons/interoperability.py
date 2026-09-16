@@ -30,6 +30,7 @@ def bind_atp_audit_trail(trail: dict[str, Any]) -> list[dict[str, Any]]:
     task_id = trail.get("task_id")
     participants = trail.get("participants", [])
     entries = trail.get("entries")
+    source_context = trail.get("source_context", {})
     if not isinstance(trail_id, str) or not trail_id:
         raise ValueError("ATP audit trail requires trail_id")
     if not isinstance(task_id, str) or not task_id:
@@ -38,6 +39,8 @@ def bind_atp_audit_trail(trail: dict[str, Any]) -> list[dict[str, Any]]:
         raise ValueError("ATP audit trail participants must be a list of strings")
     if not isinstance(entries, list):
         raise ValueError("ATP audit trail requires entries")
+    if not isinstance(source_context, dict):
+        raise ValueError("ATP audit trail source_context must be a mapping")
 
     records: list[dict[str, Any]] = []
     for entry in entries:
@@ -83,6 +86,7 @@ def bind_atp_audit_trail(trail: dict[str, Any]) -> list[dict[str, Any]]:
                 "audit_hash": entry_hash,
                 "previous_audit_hash": entry.get("prev_hash"),
                 "participants": participants,
+                "source_context": source_context,
             },
             "extensions": {
                 "atp_audit_entry": entry,
