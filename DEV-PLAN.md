@@ -1,14 +1,18 @@
 # DEV-PLAN — Governance Commons SDK
 
-**AUTHORITY LEVEL: AL:1**
-**Status:** active
-Updated: 2026-06-21
+**AUTHORITY LEVEL: AL:1**  
+**Status:** active  
+**Updated:** 2026-09-16
 
 ## Purpose
 
-`governance-commons-sdk` is the reference implementation repo for Governance
-Commons standards. It currently packages ONS validation and GC conformance report
-helpers for Python and TypeScript/JavaScript adopters.
+`governance-commons-registry` is the code-level reference implementation repo
+for Governance Commons standards. It provides specification validators,
+capability discovery, and the shared machine-readable ConformanceReport contract.
+
+The registry intentionally keeps specification responsibilities separate. The
+current contract relationships and authority boundaries are normative in
+[`docs/architecture/contract-boundaries.md`](docs/architecture/contract-boundaries.md).
 
 ## Current Surface
 
@@ -16,34 +20,50 @@ helpers for Python and TypeScript/JavaScript adopters.
 | --- | --- | --- |
 | Python package `governance-commons` | Implemented | `governance_commons/`, `pyproject.toml` |
 | npm package `governance-commons` | Implemented | `src/`, `package.json` |
-| CLI wrappers | Implemented | `gc-validate`, `gc-report` |
-| Capability Contract v0.1 validation | Implemented in Python v0.2.0 | `governance_commons/capabilities.py`, bundled schema |
-| Capability provider discovery | Implemented in Python v0.2.0 | `gc-discover`; explicit repository roots, exact-ID query |
-| Agent Dossier instance validation (`--spec dossier`) | Implemented in Python (structural, v1.4.0 instance schema) | `governance_commons/dossier.py`, bundled `agent-dossier-instance.schema.json`, 6 tests against real agent-dossier fixtures; TypeScript parity not yet done |
-| Tests | Implemented | `tests/`, `npm test` |
-| Registry publication | Planned | PyPI/npm publication pending |
+| Shared ConformanceReport v1.0.0 | Implemented | `governance_commons/report.py`, `src/report.ts`, schema |
+| ONS validation | Implemented | Python + TypeScript |
+| Capability Contract v0.1 validation | Implemented in Python | `governance_commons/capabilities.py`, bundled schema |
+| Capability provider discovery | Implemented in Python | `gc-discover` |
+| Agent Dossier instance validation v1.4.0 | Implemented in Python, structural | `governance_commons/dossier.py`, bundled schema |
+| Governance Record v1.0.0 schema validation | Implemented in Python | `governance_commons/governance_records.py`, bundled schema |
+| Governance Record semantic governance rules | Implemented in Python | authorization, temporal authority, handoff/trust-boundary rules |
+| Governance Record representative fixtures | Implemented | `tests/fixtures/governance-record/` |
+| A5 Governance Record acceptance gate | Implemented | `tests/test_a5_acceptance.py` |
+| Cross-platform clean-artifact CI | Implemented | `.github/workflows/` |
+| TypeScript parity for Dossier/Capability/Governance Record | Not yet implemented | Deliberate current asymmetry |
+| Agent Matrix validator | Not implemented in this repo | Separate contract/workstream |
+| Project Orchestrator validator | Not implemented in this repo | Separate contract/workstream |
+
+## Contract authority boundaries
+
+The registry follows these rules:
+
+- **ONS** owns naming and identifier conformance; it does not grant authority.
+- **Capability Contract** owns capability declarations and discovery semantics;
+  declaration/discovery does not grant execution permission.
+- **Agent Dossier** owns agent identity/profile structure; dossier validity does
+  not authorize an agent to act.
+- **Governance Record** owns durable governed-event records and governance-rule
+  evaluation, including authority, approval, action, handoff, revocation, and
+  validation relationships.
+- **ConformanceReport v1.0.0** owns the shared validation-result output format;
+  it reports results but does not grant authority or mutate the subject.
+
+Structural validity and governance validity remain separate. A record may be
+JSON-Schema-valid and still fail a semantic governance rule.
 
 ## Active Priorities
 
 | ID | Work | Priority | Status |
 | --- | --- | --- | --- |
-| GC-SDK.01 | Keep Python and TypeScript ONS behavior aligned | P0 | active |
+| A6.1 | Reconcile actual implemented registry surface | P0 | complete |
+| A6.2 | Formalize contract relationships and authority boundaries | P0 | complete |
+| A6.3 | Reconcile lifecycle/workflow semantics across GC contracts | P0 | next |
 | GC-SDK.02 | Keep `gc-validate` and `gc-report` stable for downstream tools | P0 | active |
-| GC-SDK.03 | Add release/publish workflows for PyPI and npm | P1 | implemented; registry credentials/OIDC configuration and first publish pending |
+| GC-SDK.03 | Maintain package/release workflows | P1 | active |
 | GC-SDK.04 | Add SDK usage examples for GC adopters | P1 | planned |
 | GC-SDK.05 | Define compatibility policy for spec versions | P1 | planned |
-| GC-SDK.06 | Prove clean-artifact installs across Windows, macOS, and Linux | P0 | matrix implemented; remote runner evidence pending |
-| GC-SDK.07 | Implement Capability Contract v0.1 validation and discovery MVP | P0 | implemented; Python source tests and build pass, pilot adoption pending |
-
-## Cross-Platform Release Gate (2026-07-11)
-
-The SDK now owns a 3-OS × 3-runtime matrix in its own repository. Python
-3.11/3.12/3.13 and Node 18/20/22 run on Ubuntu, macOS, and Windows. Jobs test
-source, build a wheel/npm tarball, install that artifact, and exercise CLI exit
-codes against fixture paths containing spaces and Unicode. This is the release
-proof pattern for Marlin and DevXToolkit to reuse. The gate remains open until
-GitHub-hosted runs succeed; local Windows source validation alone is not
-cross-platform evidence.
+| GC-SDK.07 | Capability Contract v0.1 adoption beyond MVP | P1 | active |
 
 ## Validation
 
@@ -56,13 +76,30 @@ python -m build
 npm pack --dry-run
 ```
 
-Capability MVP validation additionally requires:
+Python validation currently supports:
 
 ```powershell
-gc-validate --spec capabilities <repo>/.governance/contracts/capabilities.yaml
+gc-validate --spec ons <subject>
+gc-validate --spec capabilities <subject>
+gc-validate --spec dossier <subject>
+gc-validate --spec governance-record <subject>
 gc-discover --capability <capability-id> <repo-root> [<repo-root> ...]
 ```
 
-Python v0.2.0 contains the capability-contract MVP. The npm package remains at
-v0.1.1 and ONS-only; TypeScript parity is not part of the initial architecture
-proof. Publishing Python v0.2.0 remains a separate release action.
+The npm surface currently remains ONS/report focused. TypeScript parity for
+Capability Contract, Agent Dossier, and Governance Record is a future decision,
+not an assumed requirement of the current architecture.
+
+## Cross-Platform Release Gate
+
+The repository uses a 3-OS × 3-runtime matrix: Python 3.11/3.12/3.13 and Node
+18/20/22 on Ubuntu, macOS, and Windows. Jobs build and install clean artifacts
+and exercise validation/CLI behavior. A5 acceptance has been proven through the
+same cross-platform workflow.
+
+## Next architectural work
+
+A6.3 will reconcile the lifecycle/workflow semantics that connect governance
+records to the existing Governance Commons workflow architecture. It should
+reuse established POKEE/TBV and eco/LASSO concepts where they are applicable,
+without making the registry an execution runtime or orchestrator.
