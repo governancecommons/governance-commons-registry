@@ -1,0 +1,15 @@
+schema_version: "0.1"
+component:
+  id: invalid-conflict
+  name: Invalid Capability Adoption
+  type: service
+  version: "1.0.0"
+  status: active
+provides:
+  - id: asset.palette.generate
+    version: "1.0"
+    stability: stable
+    summary: Generate a deterministic asset palette.
+prohibits:
+  - capability: asset.palette.generate
+    reason: This intentionally conflicts with the provider declaration.
