@@ -1,11 +1,11 @@
-import { buildReport, validateName } from "governance-commons";
+import { buildReport, ONS_SPEC_VERSION, validateName } from "governance-commons";
 
 const value = "run_intent";
 const validation = validateName("python_identifier", value);
 
 const report = buildReport({
   spec: "ons",
-  spec_version: "1.4.0",
+  spec_version: ONS_SPEC_VERSION,
   profile: "standard",
   subject: "example",
   rules: [
