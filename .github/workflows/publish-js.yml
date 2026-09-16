@@ -2,6 +2,11 @@ name: Publish npm SDK
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: "SDK version to validate before publication (for example 0.2.0)"
+        required: true
+        type: string
   push:
     tags: ["sdk-v*"]
 
@@ -18,8 +23,25 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org
+      - name: Resolve release version
+        shell: bash
+        run: |
+          if [[ "${GITHUB_REF_NAME}" == sdk-v* ]]; then
+            echo "SDK_VERSION=${GITHUB_REF_NAME#sdk-v}" >> "$GITHUB_ENV"
+          elif [[ -n "${{ inputs.version }}" ]]; then
+            echo "SDK_VERSION=${{ inputs.version }}" >> "$GITHUB_ENV"
+          else
+            echo "A release tag or explicit version is required" >&2
+            exit 1
+          fi
       - run: npm ci
       - run: npm test
+      - name: Verify package version
+        shell: bash
+        run: |
+          test "$(node -p "require('./package.json').version")" = "$SDK_VERSION"
+          test "$(node -p "require('./package-lock.json').version")" = "$SDK_VERSION"
+      - run: npm pack --dry-run
       - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
