@@ -8,7 +8,7 @@ from pathlib import Path
 from governance_commons.capabilities import validate_capability_contract
 
 ROOT = Path(__file__).resolve().parents[2]
-FIXTURE = ROOT / "tests" / "fixtures" / "capabilities" / "valid" / "minimal.yaml"
+FIXTURE = ROOT / "tests" / "fixtures" / "capabilities.valid.yaml"
 
 
 def main() -> int:
