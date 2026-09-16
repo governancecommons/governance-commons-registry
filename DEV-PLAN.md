@@ -80,7 +80,7 @@ runtime or orchestrator.
 | A6.2 | Formalize contract relationships and authority boundaries | P0 | complete |
 | A6.3 | Reconcile lifecycle/workflow semantics across GC contracts | P0 | complete |
 | A6.4 | Define explicit workflow-to-Governance Record mapping/bridge guidance | P0 | complete |
-| GC-SDK.02 | Keep `gc-validate` and `gc-report` stable for downstream tools | P0 | active |
+| GC-SDK.02 | Keep `gc-validate` and `gc-report` stable for downstream tools | P0 | complete |
 | GC-SDK.03 | Maintain package/release workflows | P1 | active |
 | GC-SDK.04 | Add SDK usage examples for GC adopters | P1 | complete |
 | GC-SDK.05 | Define compatibility policy for spec versions | P1 | complete |
@@ -125,12 +125,13 @@ implies silent schema fallback.
 The repository uses a 3-OS × 3-runtime matrix: Python 3.11/3.12/3.13 and Node
 18/20/22 on Ubuntu, macOS, and Windows. Jobs build and install clean artifacts
 and exercise validation/CLI behavior. A5 acceptance has been proven through the
-same cross-platform workflow.
+same cross-platform workflow. GC-SDK.02 adds explicit npm built-CLI acceptance
+and Python report-version boundary coverage.
 
 ## Next architectural work
 
-A6.4, GC-SDK.04, and GC-SDK.05 are complete. No new lifecycle or authority
-layer is introduced by the compatibility policy. Continue the active SDK
-stability/release work (GC-SDK.02/03) and Capability Contract adoption
-(GC-SDK.07), using the compatibility policy as the version boundary for future
-specification and package releases.
+A6.4, GC-SDK.02, GC-SDK.04, and GC-SDK.05 are complete. No new lifecycle or
+authority layer is introduced by the compatibility policy or CLI stabilization.
+Continue GC-SDK.03 package/release workflow maintenance and Capability Contract
+adoption (GC-SDK.07), using the compatibility policy as the version boundary
+for future specification and package releases.
