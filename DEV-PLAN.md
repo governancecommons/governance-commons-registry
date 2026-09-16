@@ -15,6 +15,8 @@ current contract relationships and authority boundaries are normative in
 [`docs/architecture/contract-boundaries.md`](docs/architecture/contract-boundaries.md).
 The workflow/lifecycle relationship is normative in
 [`docs/architecture/workflow-lifecycle.md`](docs/architecture/workflow-lifecycle.md).
+The explicit workflow-to-record bridge is normative in
+[`docs/architecture/workflow-governance-record-mapping.md`](docs/architecture/workflow-governance-record-mapping.md).
 
 ## Current Surface
 
@@ -75,6 +77,7 @@ runtime or orchestrator.
 | A6.1 | Reconcile actual implemented registry surface | P0 | complete |
 | A6.2 | Formalize contract relationships and authority boundaries | P0 | complete |
 | A6.3 | Reconcile lifecycle/workflow semantics across GC contracts | P0 | complete |
+| A6.4 | Define explicit workflow-to-Governance Record mapping/bridge guidance | P0 | complete |
 | GC-SDK.02 | Keep `gc-validate` and `gc-report` stable for downstream tools | P0 | active |
 | GC-SDK.03 | Maintain package/release workflows | P1 | active |
 | GC-SDK.04 | Add SDK usage examples for GC adopters | P1 | planned |
@@ -115,8 +118,9 @@ same cross-platform workflow.
 
 ## Next architectural work
 
-A6.3 is complete. The next architectural work should build from the reconciled
-contract and lifecycle boundaries rather than introducing another parallel
-workflow model. Candidate follow-on work includes explicit workflow-to-record
-mapping guidance and broader contract parity where justified by actual adopter
-needs.
+A6.4 is complete. The next architectural work should build from the reconciled
+contract, lifecycle, and workflow-to-record bridge boundaries rather than
+introducing another parallel workflow model. Candidate follow-on work includes
+SDK usage examples, compatibility policy, broader contract parity where
+justified by actual adopter needs, and additional bridge guidance as concrete
+workflow integrations emerge.
