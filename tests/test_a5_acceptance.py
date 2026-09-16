@@ -22,6 +22,7 @@ VALID_RECORD_TYPES = {
     "registration.json",
     "revocation.json",
     "provenance.json",
+    "eco-context.json",
 }
 
 INVALID_RECORDS = {
