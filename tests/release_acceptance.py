@@ -41,7 +41,7 @@ def main() -> None:
         if not ref_name:
             raise SystemExit("release tag ref is missing")
         match = re.fullmatch(
-            r"sdk-v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)", ref_name
+            r"sdk-v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)", ref_name
         )
         if not match:
             raise SystemExit(f"invalid SDK release tag: {ref_name}")
