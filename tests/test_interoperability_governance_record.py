@@ -72,6 +72,7 @@ def test_atp_interoperability_fixture_binds_to_governance_record_boundary() -> N
         "handoff.accepted",
         "escalation.triggered",
     ]
+    assert records[0]["governance_context"]["source_context"]["matrix_binding"]["route_owner"] == "agent-matrix"
     assert records[0]["extensions"]["atp_audit_entry"]["payload"]["handoff_id"].startswith("agent_handoff:")
     assert records[2]["extensions"]["atp_audit_entry"]["payload"]["reason"] == "requires_human_review"
 
