@@ -1,0 +1,17 @@
+{
+  "source": {
+    "matrix": {"system": "agent-matrix", "version": "1.6.0", "route_owner": "agent-matrix"},
+    "apo": {"system": "agent-project-orchestrator", "version": "1.4.0", "execution_owner": "agent-project-orchestrator"},
+    "atp": {"system": "agent-team-protocol", "version": "0.1.0"},
+    "registry": {"system": "governance-commons-registry", "record_schema": "1.0.0"}
+  },
+  "task_id": "task:a7-interop-001",
+  "delegation_id": "delegation:a7-interop-001",
+  "events": [
+    {"event_type": "delegation.granted", "event_id": "evt-a7-001", "agent_id": "agent:orchestrator", "timestamp": "2026-09-16T23:00:00Z", "payload": {"delegation_id": "delegation:a7-interop-001"}},
+    {"event_type": "task.started", "event_id": "evt-a7-002", "agent_id": "agent:reviewer", "timestamp": "2026-09-16T23:00:05Z", "payload": {"delegation_id": "delegation:a7-interop-001"}},
+    {"event_type": "handoff.issued", "event_id": "evt-a7-003", "agent_id": "agent:reviewer", "timestamp": "2026-09-16T23:01:00Z", "payload": {"delegation_id": "delegation:a7-interop-001", "handoff_id": "agent_handoff:a7-0001"}},
+    {"event_type": "delegation.revoked", "event_id": "evt-a7-004", "agent_id": "agent:orchestrator", "timestamp": "2026-09-16T23:01:30Z", "payload": {"delegation_id": "delegation:a7-interop-001", "reason": "review_boundary_reached"}},
+    {"event_type": "task.completed", "event_id": "evt-a7-005", "agent_id": "agent:reviewer", "timestamp": "2026-09-16T23:02:00Z", "payload": {"delegation_id": "delegation:a7-interop-001"}}
+  ]
+}
