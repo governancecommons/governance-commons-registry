@@ -19,6 +19,8 @@ The explicit workflow-to-record bridge is normative in
 [`docs/architecture/workflow-governance-record-mapping.md`](docs/architecture/workflow-governance-record-mapping.md).
 The cross-spec implementation reconciliation is normative guidance in
 [`docs/architecture/ecosystem-conformance-reconciliation.md`](docs/architecture/ecosystem-conformance-reconciliation.md).
+The delegation/revocation evidence boundary is documented in
+`docs/architecture/delegation-lifecycle-revocation-evidence.md`.
 
 ## Current Surface
 
@@ -34,7 +36,7 @@ The cross-spec implementation reconciliation is normative guidance in
 | Capability Contract adoption acceptance gate | Implemented | `tests/test_sdk07_acceptance.py`, `tests/fixtures/capability-adoption/` |
 | Agent Dossier instance validation v1.4.0 | Implemented in Python, structural | `governance_commons/dossier.py`, bundled schema |
 | Governance Record v1.0.0 schema validation | Implemented in Python | `governance_commons/governance_records.py`, bundled schema |
-| Governance Record semantic governance rules | Implemented in Python | authorization, temporal authority, handoff/trust-boundary rules |
+| Governance Record semantic governance rules | Implemented in Python | authorization, temporal authority, handoff/trust-boundary, revocation evidence rules |
 | Governance Record representative fixtures | Implemented | `tests/fixtures/governance-record/` |
 | A5 Governance Record acceptance gate | Implemented | `tests/test_a5_acceptance.py` |
 | Cross-platform clean-artifact CI | Implemented | `.github/workflows/` |
@@ -90,38 +92,22 @@ runtime or orchestrator.
 | GC-SDK.04 | Add SDK usage examples for GC adopters | P1 | complete |
 | GC-SDK.05 | Define compatibility policy for spec versions | P1 | complete |
 | GC-SDK.07 | Capability Contract v0.1 adoption beyond MVP | P1 | complete |
-| A7 | Reconcile ATP, Agent Matrix, and APO implemented surfaces and define the cross-spec binding boundary | P0 | reconciliation complete; implementation queued in owning specs |
+| A7 | Reconcile ATP, Agent Matrix, and APO implemented surfaces and define the cross-spec binding boundary | P0 | implementation seam complete; Phase B integration queued |
 
 ## A7 — ecosystem conformance reconciliation
 
-A7 was reconciled against the actual `main` surfaces of Agent Team Protocol,
+A7 is reconciled against the current implemented surfaces of Agent Team Protocol,
 Agent Matrix, and Agent Project Orchestrator. The reconciliation is captured in
 `docs/architecture/ecosystem-conformance-reconciliation.md`.
 
-Key findings:
+The executable boundary now includes ATP semantic delegation/trust validation,
+the ATP shared-audit writer/verifier and APO event bridge, ATP delegation
+lifecycle/revocation evidence checks, and the Registry's Governance Record
+revocation/effective-time rules.
 
-- ATP currently has five section schemas and schema-level test vectors, but no
-  complete validator/CLI, CI workflow, delegation/trust runtime verifier, or
-  shared-audit runtime writer/verifier.
-- ATP's delegation policy requires orchestrator countersigning, while the
-  current delegation JSON Schema leaves `signature` optional. This is a
-  concrete structural/policy gap to resolve in ATP rather than in the Registry.
-- Agent Matrix owns capability/profile/routing semantics. APO already consumes
-  Matrix routing and the effective roster for explainable recommendations.
-- APO owns runtime dispatch, retries, escalation handling, governance loading,
-  resource budgets, telemetry, and agent-dossier-compatible handoff envelopes.
-- ATP owns fleet-level delegation, trust, shared audit, fleet escalation, and
-  team lifecycle. It should consume Matrix/Orchestrator surfaces rather than
-  duplicate their authority or execution models.
-- The primary missing integration seam is an explicit binding from APO
-  handoff/delegation/escalation events to ATP audit/delegation/trust semantics.
-- Governance Record remains the durable governed-event/evidence boundary and
-  ConformanceReport remains the shared validation-result boundary.
-
-The next implementation work belongs primarily to ATP and should produce a
-complete validator/CI path, executable semantic checks, and an interoperability
-fixture spanning Matrix → APO → ATP. Registry changes should consume those
-established contracts rather than implement fleet runtime behavior.
+The remaining ATP CLI/reference-runtime work is owning-spec release work, not a
+Registry A7 gap. The Registry will consume established ATP/Matrix/APO contracts
+through fixtures and the existing ConformanceReport/Governance Record boundaries.
 
 ## Validation
 
@@ -182,9 +168,8 @@ not performed by the ordinary cross-platform CI workflow.
 
 ## Next architectural work
 
-A6.4, GC-SDK.02, GC-SDK.03, GC-SDK.04, GC-SDK.05, and GC-SDK.07 are complete. A7
-now establishes the cross-spec implementation boundary. The next implementation
-should occur in the owning ATP/Matrix/APO repositories and then be consumed by
-the Registry through fixtures and shared ConformanceReport/Governance Record
-boundaries. No universal governance runtime or parallel authority layer should
-be introduced.
+A7 implementation gaps at the Registry/ATP evidence seam are closed. Phase B
+now moves to cross-repository interoperability fixtures and conformance
+consumption: Matrix → APO → ATP → Governance Record → ConformanceReport. The
+next work must preserve the established ownership boundaries and must not add a
+universal governance runtime or duplicate authority/routing/dispatch state.
