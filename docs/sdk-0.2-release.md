@@ -47,10 +47,13 @@ publication job dependent on the successful build job.
 3. run the complete npm test/build suite;
 4. verify `package.json` and `package-lock.json` versions;
 5. run `npm pack --dry-run`;
-6. publish the package with npm provenance.
+6. publish the package through npm Trusted Publishing (GitHub Actions OIDC).
 
-The existing npm token authentication remains unchanged; changing repository
-credential configuration is outside this code-level maintenance task.
+The workflow grants `id-token: write` and uses a GitHub-hosted Node 24 runner.
+The npm package must have a matching Trusted Publisher configured for
+`governancecommons/governance-commons-registry` and
+`.github/workflows/publish-js.yml` with direct publish permission. No long-lived
+`NPM_TOKEN` is required.
 
 ## Non-goals
 
