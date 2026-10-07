@@ -173,3 +173,7 @@ now moves to cross-repository interoperability fixtures and conformance
 consumption: Matrix → APO → ATP → Governance Record → ConformanceReport. The
 next work must preserve the established ownership boundaries and must not add a
 universal governance runtime or duplicate authority/routing/dispatch state.
+
+## 2026-10-05 — SDK working-tree reconciliation
+
+Local main was fast-forwarded to remote commit 027562774d80470ec0e53a324565f914873bbe0e (coordinated Python/npm 0.2.0). The earlier unpublished TypeScript parity and version draft is preserved byte-for-byte in ignored `.reconciliation/local-parity-draft/` and the external reconciliation evidence archive, including its staged patch. It is not part of the current API or release claim. Python/npm surfaces remain intentionally different as documented by upstream. TypeScript parity remains a separately scoped future decision. No package was published and no new version was declared.

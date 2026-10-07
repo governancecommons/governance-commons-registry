@@ -108,3 +108,7 @@ A6.1-A6.4 established the current boundaries:
 GC-SDK.04 examples, GC-SDK.05 compatibility policy, and GC-SDK.03 release
 maintenance build on those boundaries without introducing a new runtime or
 duplicating any contract schema.
+
+## 2026-10-05 — SDK working-tree reconciliation
+
+Local main was fast-forwarded to remote commit 027562774d80470ec0e53a324565f914873bbe0e (coordinated Python/npm 0.2.0). The earlier unpublished TypeScript parity and version draft is preserved byte-for-byte in ignored `.reconciliation/local-parity-draft/` and the external reconciliation evidence archive, including its staged patch. It is not part of the current API or release claim. Python/npm surfaces remain intentionally different as documented by upstream. TypeScript parity remains a separately scoped future decision. No package was published and no new version was declared.

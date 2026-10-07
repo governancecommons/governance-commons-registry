@@ -5,3 +5,6 @@ __pycache__/
 .venv/
 build/
 *.pyc
+
+# Preserved unpublished working drafts; excluded from canonical source/packages.
+.reconciliation/
