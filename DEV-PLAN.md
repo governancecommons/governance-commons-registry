@@ -177,3 +177,12 @@ universal governance runtime or duplicate authority/routing/dispatch state.
 ## 2026-10-05 — SDK working-tree reconciliation
 
 Local main was fast-forwarded to remote commit 027562774d80470ec0e53a324565f914873bbe0e (coordinated Python/npm 0.2.0). The earlier unpublished TypeScript parity and version draft is preserved byte-for-byte in ignored `.reconciliation/local-parity-draft/` and the external reconciliation evidence archive, including its staged patch. It is not part of the current API or release claim. Python/npm surfaces remain intentionally different as documented by upstream. TypeScript parity remains a separately scoped future decision. No package was published and no new version was declared.
+
+## 2026-10-07 — Dossier release-candidate CI gate
+
+The Python clean-artifact smoke test now requires the installed wheel's
+`gc-validate --spec dossier` command to accept a valid fixture and reject an
+invalid fixture. Direct CLI acceptance tests cover the same success and failure
+paths. The existing 3-OS by 3-Python fresh-checkout workflow therefore provides
+candidate-wheel evidence for both ONS and Dossier after the change reaches
+`main`; it does not retroactively add Dossier support to published Python 0.2.0.

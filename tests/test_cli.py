@@ -72,6 +72,20 @@ class TestGcValidate:
         result = _validate("--spec", "ons", str(f))
         assert result.returncode == 2
 
+    def test_dossier_cli_accepts_valid_instance(self) -> None:
+        fixture = Path(__file__).parent / "fixtures" / "dossier" / "valid" / "agent-dossier-instance.yaml"
+        result = _validate("--spec", "dossier", "--output", "json", str(fixture))
+        assert result.returncode == 0
+        report = json.loads(result.stdout)
+        assert report["spec"] == "dossier"
+        assert report["conformant"] is True
+
+    def test_dossier_cli_rejects_invalid_instance(self) -> None:
+        fixture = Path(__file__).parent / "fixtures" / "dossier" / "invalid" / "agent-dossier-instance-missing-identity.yaml"
+        result = _validate("--spec", "dossier", "--output", "json", str(fixture))
+        assert result.returncode == 1
+        assert json.loads(result.stdout)["conformant"] is False
+
 
 class TestGcReport:
     def _saved_report(self, tmp_path: Path, conformant: bool = True) -> Path:

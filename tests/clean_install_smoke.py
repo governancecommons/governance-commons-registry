@@ -41,6 +41,8 @@ expect(1, "--spec", "ons", str(fixtures / "invalid checks ünicode.json"))
 expect(2, "--spec", "ons", str(fixtures / "missing file.json"))
 expect(0, "--spec", "capabilities", str(fixtures / "capabilities.valid.yaml"))
 expect(1, "--spec", "capabilities", str(fixtures / "capabilities.invalid.yaml"))
+expect(0, "--spec", "dossier", str(fixtures / "dossier" / "valid" / "agent-dossier-instance.yaml"))
+expect(1, "--spec", "dossier", str(fixtures / "dossier" / "invalid" / "agent-dossier-instance-missing-identity.yaml"))
 
 discovery = subprocess.run(
     [discover_command, "--output", "json", str(fixtures / "capabilities.valid.yaml")],
