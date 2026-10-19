@@ -1,0 +1,339 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://governancecommons.org/research/gc-incident-evidence-draft/0.1.0/schema",
+  "title": "Non-normative GC incident evidence draft",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_version",
+    "incident_id",
+    "title",
+    "description",
+    "reporter",
+    "affected_systems",
+    "timeline",
+    "harm",
+    "severity",
+    "response_actions",
+    "evidence_refs",
+    "review",
+    "disclosure"
+  ],
+  "properties": {
+    "profile_version": {
+      "const": "0.1.0"
+    },
+    "incident_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reporter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity",
+        "role"
+      ],
+      "properties": {
+        "identity": {
+          "$ref": "#/$defs/ref"
+        },
+        "role": {
+          "enum": [
+            "reporter",
+            "developer",
+            "deployer",
+            "observer",
+            "other"
+          ]
+        },
+        "affiliation": {
+          "type": "string"
+        }
+      }
+    },
+    "affected_systems": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "system",
+          "relationship"
+        ],
+        "properties": {
+          "system": {
+            "$ref": "#/$defs/ref"
+          },
+          "relationship": {
+            "enum": [
+              "involved",
+              "suspected",
+              "unknown"
+            ]
+          },
+          "version": {
+            "type": "string"
+          },
+          "developer": {
+            "$ref": "#/$defs/ref"
+          },
+          "deployer": {
+            "$ref": "#/$defs/ref"
+          }
+        }
+      }
+    },
+    "timeline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "first_known_at",
+        "reported_at"
+      ],
+      "properties": {
+        "first_known_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reported_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "occurred_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "harm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "description"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "reported",
+            "suspected",
+            "unknown",
+            "none_reported"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "affected_parties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ref"
+          }
+        }
+      }
+    },
+    "severity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "assessed",
+            "unassessed",
+            "unknown"
+          ]
+        },
+        "classification": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "assessed"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "classification",
+              "rationale"
+            ]
+          }
+        }
+      ]
+    },
+    "response_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "description",
+          "status"
+        ],
+        "properties": {
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "proposed",
+              "authorized",
+              "in_progress",
+              "completed",
+              "cancelled"
+            ]
+          },
+          "governance_record": {
+            "$ref": "#/$defs/ref"
+          }
+        }
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reference",
+          "kind",
+          "sensitivity"
+        ],
+        "properties": {
+          "reference": {
+            "$ref": "#/$defs/ref"
+          },
+          "kind": {
+            "enum": [
+              "governance_record",
+              "artifact",
+              "external_report",
+              "other"
+            ]
+          },
+          "sensitivity": {
+            "enum": [
+              "public",
+              "restricted",
+              "confidential"
+            ]
+          }
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "approved",
+            "rejected",
+            "not_required"
+          ]
+        },
+        "reviewer": {
+          "$ref": "#/$defs/ref"
+        },
+        "governance_record": {
+          "$ref": "#/$defs/ref"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "approved",
+                  "rejected"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reviewer",
+              "governance_record"
+            ]
+          }
+        }
+      ]
+    },
+    "disclosure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classification",
+        "publication_status"
+      ],
+      "properties": {
+        "classification": {
+          "enum": [
+            "public",
+            "restricted",
+            "confidential"
+          ]
+        },
+        "publication_status": {
+          "enum": [
+            "draft",
+            "review_pending",
+            "approved_for_release",
+            "withheld"
+          ]
+        },
+        "redaction_notes": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "required": [
+        "type",
+        "id"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
