@@ -102,3 +102,16 @@
 - Matrix count: 8 partial + 21 gap + 0 verified = 29.
 - GitHub source inspection: completed for the six linked GC documents above; no code modifications.
 - Runtime/CI tests: **not run**; this is documentation-only research. No claim of implementation closure.
+
+
+## Decision record — 2026-10-19: additive incident evidence capability
+
+**Decision (design direction, not normative adoption):** Preserve the independently versioned Governance Commons core. Pursue a reusable **optional GC Incident Evidence Profile** with an OECD incident-reporting compatibility mapping as its first external interoperability target. Do not make OECD-specific reporting mandatory for all GC adopters.
+
+**Rationale:** Existing GC governance primitives support agent identity, authorization, audit trails, human oversight, delegation and conformance reporting. These are not by themselves an OECD-compatible incident report. A profile can add incident identity, chronology, affected parties, harm/severity taxonomy, causal-system relationships, actions taken, evidence links, reporter/reviewer roles, redaction and disclosure handling, and export validation without redefining the core.
+
+**Placement rule:** Incident-specific concepts belong in the optional profile or adapter. Amend an existing GC core contract only if source inspection and tests demonstrate a general-purpose governance defect, and only through its existing compatibility/change-control process.
+
+**Acceptance direction:** (1) verify exact Registry Governance Record schema/validator and other component evidence at pinned revisions; (2) draft non-normative profile field mapping preserving all 29 OECD criteria and seven mandatory criteria; (3) build representative valid/invalid fixtures and validation, including sensitive-data handling; (4) test Python and distinguish npm parity; (5) publish only after explicit governance review. Neither OECD endorsement nor regulatory compliance is implied.
+
+**Status:** direction recorded; profile not yet ratified, registered, implemented, tested or released.
