@@ -19,3 +19,5 @@ jobs:
         run: python -m pip install 'jsonschema[format]>=4.23'
       - name: Validate draft schema, fixtures, and report-local semantics
         run: python docs/research/gc-incident-evidence-draft/validate_draft.py
+      - name: Validate linked Governance Records, authority, and review
+        run: python docs/research/gc-incident-evidence-draft/test_cross_record.py
