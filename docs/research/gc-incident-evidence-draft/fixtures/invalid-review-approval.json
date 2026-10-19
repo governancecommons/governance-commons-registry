@@ -1,0 +1,60 @@
+{
+  "profile_version": "0.1.0",
+  "incident_id": "example-001",
+  "title": "Example incident",
+  "description": "Illustrative only",
+  "reporter": {
+    "identity": {
+      "type": "organization",
+      "id": "example-org"
+    },
+    "role": "observer"
+  },
+  "affected_systems": [
+    {
+      "system": {
+        "type": "ai-system",
+        "id": "example-ai"
+      },
+      "relationship": "suspected"
+    }
+  ],
+  "timeline": {
+    "first_known_at": "2026-10-19T09:00:00Z",
+    "reported_at": "2026-10-19T10:00:00Z"
+  },
+  "harm": {
+    "status": "unknown",
+    "description": "Under investigation"
+  },
+  "severity": {
+    "status": "unassessed"
+  },
+  "response_actions": [
+    {
+      "description": "Pause workflow",
+      "status": "proposed",
+      "governance_record": {
+        "type": "governance-record",
+        "id": "gr-001"
+      }
+    }
+  ],
+  "evidence_refs": [
+    {
+      "reference": {
+        "type": "governance-record",
+        "id": "gr-001"
+      },
+      "kind": "governance_record",
+      "sensitivity": "restricted"
+    }
+  ],
+  "review": {
+    "status": "approved"
+  },
+  "disclosure": {
+    "classification": "restricted",
+    "publication_status": "draft"
+  }
+}
