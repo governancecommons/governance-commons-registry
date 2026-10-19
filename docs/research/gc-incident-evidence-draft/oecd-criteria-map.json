@@ -1,0 +1,246 @@
+{
+  "profile": "GC Incident Evidence Draft",
+  "profile_version": "0.1.0",
+  "mapping_id": "GC-INCIDENT.03-OECD-2025",
+  "source": {
+    "title": "Towards a common reporting framework for AI incidents",
+    "doi": "10.1787/f326d4ac-en",
+    "table": "Table 2.2 and Annex B Table B.1",
+    "year": 2025
+  },
+  "status": "research_only_not_conformant",
+  "criteria": [
+    {
+      "criterion": 1,
+      "label": "Title",
+      "mandatory": true,
+      "status": "partial",
+      "candidate_path": "title",
+      "limitation": "Title field exists; OECD reporting validation not established"
+    },
+    {
+      "criterion": 2,
+      "label": "Description of incident",
+      "mandatory": true,
+      "status": "partial",
+      "candidate_path": "description",
+      "limitation": "Narrative exists; OECD content requirements not validated"
+    },
+    {
+      "criterion": 3,
+      "label": "AI-system relationship to incident",
+      "mandatory": true,
+      "status": "partial",
+      "candidate_path": "affected_systems[].relationship",
+      "limitation": "Involved/suspected/unknown is not OECD causal-role taxonomy"
+    },
+    {
+      "criterion": 4,
+      "label": "Submitter role/affiliation",
+      "mandatory": true,
+      "status": "partial",
+      "candidate_path": "reporter.role",
+      "limitation": "Role exists; affiliation/contact completeness and OECD taxonomy absent"
+    },
+    {
+      "criterion": 5,
+      "label": "Date of first known occurrence",
+      "mandatory": false,
+      "status": "partial",
+      "candidate_path": "timeline.first_known_at",
+      "limitation": "First known date recorded; OECD meaning needs verification"
+    },
+    {
+      "criterion": 6,
+      "label": "Countries of occurrence",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 7,
+      "label": "Supporting materials",
+      "mandatory": true,
+      "status": "partial",
+      "candidate_path": "evidence_refs[]",
+      "limitation": "Typed references exist; attachment/URL and provenance requirements unverified"
+    },
+    {
+      "criterion": 8,
+      "label": "AI-system name and version",
+      "mandatory": false,
+      "status": "partial",
+      "candidate_path": "affected_systems[].system;affected_systems[].version",
+      "limitation": "System ID and optional version; OECD name/version contract absent"
+    },
+    {
+      "criterion": 9,
+      "label": "Developer/deployer organisations",
+      "mandatory": false,
+      "status": "partial",
+      "candidate_path": "affected_systems[].developer;affected_systems[].deployer",
+      "limitation": "Generic refs not OECD organization details"
+    },
+    {
+      "criterion": 10,
+      "label": "Severity",
+      "mandatory": true,
+      "status": "partial",
+      "candidate_path": "severity.classification",
+      "limitation": "Free text; OECD severity scale absent"
+    },
+    {
+      "criterion": 11,
+      "label": "Harm type",
+      "mandatory": true,
+      "status": "partial",
+      "candidate_path": "harm.status;harm.description",
+      "limitation": "Harm status/narrative, not OECD harm-type taxonomy"
+    },
+    {
+      "criterion": 12,
+      "label": "Quantification of harm",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 13,
+      "label": "Unintended/wrongful use linkage",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 14,
+      "label": "Affected stakeholders",
+      "mandatory": false,
+      "status": "partial",
+      "candidate_path": "harm.affected_parties[]",
+      "limitation": "Generic party refs, not OECD stakeholder taxonomy"
+    },
+    {
+      "criterion": 15,
+      "label": "Human/fundamental rights impacts",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 16,
+      "label": "Associated AI principles",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 17,
+      "label": "Industries",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 18,
+      "label": "Business functions",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 19,
+      "label": "Critical functions/infrastructure",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 20,
+      "label": "Breadth of deployment",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 21,
+      "label": "Training-data linkage",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 22,
+      "label": "Model linkage",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 23,
+      "label": "Usage rights",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 24,
+      "label": "Multiple AI-system interaction linkage",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 25,
+      "label": "AI-system tasks",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 26,
+      "label": "Maximum autonomy level",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 27,
+      "label": "Actions taken",
+      "mandatory": false,
+      "status": "partial",
+      "candidate_path": "response_actions[]",
+      "limitation": "Actions represented without OECD response categories"
+    },
+    {
+      "criterion": 28,
+      "label": "Steps to reproduce",
+      "mandatory": false,
+      "status": "gap",
+      "candidate_path": null,
+      "limitation": "No OECD-specific field or validated equivalent in experimental draft"
+    },
+    {
+      "criterion": 29,
+      "label": "Additional information",
+      "mandatory": false,
+      "status": "partial",
+      "candidate_path": "description",
+      "limitation": "Generic narrative is not a dedicated additional-information field"
+    }
+  ]
+}
