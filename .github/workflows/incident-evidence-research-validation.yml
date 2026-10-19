@@ -21,3 +21,5 @@ jobs:
         run: python docs/research/gc-incident-evidence-draft/validate_draft.py
       - name: Validate linked Governance Records, authority, and review
         run: python docs/research/gc-incident-evidence-draft/test_cross_record.py
+      - name: Validate OECD 29-criterion research mapping
+        run: python docs/research/gc-incident-evidence-draft/test_oecd_mapping.py
