@@ -25,3 +25,5 @@ jobs:
         run: python docs/research/gc-incident-evidence-draft/test_oecd_mapping.py
       - name: Validate OECD mandatory-field research adapter
         run: python docs/research/gc-incident-evidence-draft/oecd-mandatory/test_oecd_mandatory.py
+      - name: Validate OECD adapter binding and privacy export guard
+        run: python docs/research/gc-incident-evidence-draft/oecd-mandatory/test_export_adapter.py
