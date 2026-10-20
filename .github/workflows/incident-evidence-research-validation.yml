@@ -33,3 +33,5 @@ jobs:
         run: python docs/research/gc-incident-evidence-draft/oecd-optional/test_bundle.py
       - name: Verify incident research acceptance and release boundaries
         run: python docs/research/gc-incident-evidence-draft/test_acceptance_status.py
+      - name: Verify OECD primary-source audit and interoperability claim boundaries
+        run: python docs/research/gc-incident-evidence-draft/test_oecd_source_audit.py
