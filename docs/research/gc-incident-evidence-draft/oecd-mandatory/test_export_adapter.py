@@ -57,4 +57,20 @@ except AdapterError:
     print("PASS rejected missing Governance Record index")
 else:
     raise AssertionError("Missing records must fail closed")
-print("12/12 allowlist and rejection checks passed (structural only).")
+bad_records = copy.deepcopy(records)
+bad_records["gr-approval"]["approval"]["status"] = "rejected"
+try:
+    public_export(profile, adapter, bad_records)
+except AdapterError:
+    print("PASS rejected contradictory approval evidence")
+else:
+    raise AssertionError("Contradictory approval evidence must fail closed")
+bad_records = copy.deepcopy(records)
+bad_records.pop("gr-approval")
+try:
+    public_export(profile, adapter, bad_records)
+except AdapterError:
+    print("PASS rejected missing approval record")
+else:
+    raise AssertionError("Missing approval record must fail closed")
+print("14/14 allowlist and rejection checks passed (structural only).")
