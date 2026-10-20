@@ -5,7 +5,7 @@
     "doi": "10.1787/f326d4ac-en",
     "location": "Table 2.2 and Annex B Table B.1"
   },
-  "method": "Each row is a GC candidate mapping, not a verified OECD semantic contract. Primary PDF table and annex must be inspected before upgrading any row.",
+  "method": "Source-text reconciliation against user-provided OECD PDF, Annex B Table B.1 pp.23-24; field labels and mandatory marks cross-checked by criterion number. Format transcriptions are provisional and require independent reviewer signoff. Controlled enumerations, cardinalities, and conditional semantics remain unverified.",
   "criteria": [
     {
       "criterion": 1,
@@ -13,13 +13,21 @@
       "candidate_path": "title",
       "claimed_mandatory": true,
       "existing_assessment": "partial",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "Title field exists; OECD reporting validation not established",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "open_text",
+      "oecd_dimension": "incident_metadata",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "23",
+        "source_excerpt": "Title",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 2,
@@ -27,13 +35,21 @@
       "candidate_path": "description",
       "claimed_mandatory": true,
       "existing_assessment": "partial",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "Narrative exists; OECD content requirements not validated",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "open_text",
+      "oecd_dimension": "incident_metadata",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "23",
+        "source_excerpt": "Description of incident",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 3,
@@ -41,13 +57,21 @@
       "candidate_path": "affected_systems[].relationship",
       "claimed_mandatory": true,
       "existing_assessment": "partial",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "Involved/suspected/unknown is not OECD causal-role taxonomy",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "multi_selection_with_open_text",
+      "oecd_dimension": "incident_metadata",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "23",
+        "source_excerpt": "AI-system relationship to incident",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 4,
@@ -55,13 +79,21 @@
       "candidate_path": "reporter.role",
       "claimed_mandatory": true,
       "existing_assessment": "partial",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "Role exists; affiliation/contact completeness and OECD taxonomy absent",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "open_text_and_multi_selection",
+      "oecd_dimension": "incident_metadata",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "23",
+        "source_excerpt": "Submitter role/affiliation",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 5,
@@ -69,13 +101,21 @@
       "candidate_path": "timeline.first_known_at",
       "claimed_mandatory": false,
       "existing_assessment": "partial",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "First known date recorded; OECD meaning needs verification",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "date",
+      "oecd_dimension": "incident_metadata",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "23",
+        "source_excerpt": "Date of first known occurrence",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 6,
@@ -83,13 +123,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "multi_selection",
+      "oecd_dimension": "incident_metadata",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "23",
+        "source_excerpt": "Countries of occurrence",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 7,
@@ -97,13 +145,21 @@
       "candidate_path": "evidence_refs[]",
       "claimed_mandatory": true,
       "existing_assessment": "partial",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "Typed references exist; attachment/URL and provenance requirements unverified",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "open_text_urls_upload",
+      "oecd_dimension": "incident_metadata",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "23",
+        "source_excerpt": "Supporting materials",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 8,
@@ -111,13 +167,21 @@
       "candidate_path": "affected_systems[].system;affected_systems[].version",
       "claimed_mandatory": false,
       "existing_assessment": "partial",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "System ID and optional version; OECD name/version contract absent",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "open_text",
+      "oecd_dimension": "incident_metadata",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "23",
+        "source_excerpt": "AI-system name and version",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 9,
@@ -125,13 +189,21 @@
       "candidate_path": "affected_systems[].developer;affected_systems[].deployer",
       "claimed_mandatory": false,
       "existing_assessment": "partial",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "Generic refs not OECD organization details",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "open_text",
+      "oecd_dimension": "incident_metadata",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "23",
+        "source_excerpt": "Developer/deployer organisations",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 10,
@@ -139,13 +211,21 @@
       "candidate_path": "severity.classification",
       "claimed_mandatory": true,
       "existing_assessment": "partial",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "Free text; OECD severity scale absent",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "multi_selection",
+      "oecd_dimension": "harm_details",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "23",
+        "source_excerpt": "Severity",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 11,
@@ -153,13 +233,21 @@
       "candidate_path": "harm.status;harm.description",
       "claimed_mandatory": true,
       "existing_assessment": "partial",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "Harm status/narrative, not OECD harm-type taxonomy",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "multi_selection",
+      "oecd_dimension": "harm_details",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "23",
+        "source_excerpt": "Harm type",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 12,
@@ -167,13 +255,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "multi_selection",
+      "oecd_dimension": "harm_details",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "23",
+        "source_excerpt": "Quantification of harm",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 13,
@@ -181,13 +277,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "checkbox",
+      "oecd_dimension": "harm_details",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Unintended/wrongful use linkage",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 14,
@@ -195,13 +299,21 @@
       "candidate_path": "harm.affected_parties[]",
       "claimed_mandatory": false,
       "existing_assessment": "partial",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "Generic party refs, not OECD stakeholder taxonomy",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "multi_selection",
+      "oecd_dimension": "people_and_planet",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Affected stakeholders",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 15,
@@ -209,13 +321,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "checkbox",
+      "oecd_dimension": "people_and_planet",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Human/fundamental rights impacts",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 16,
@@ -223,13 +343,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "multi_selection",
+      "oecd_dimension": "people_and_planet",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Associated AI principles",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 17,
@@ -237,13 +365,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "multi_selection",
+      "oecd_dimension": "economic_context",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Industries",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 18,
@@ -251,13 +387,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "multi_selection",
+      "oecd_dimension": "economic_context",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Business functions",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 19,
@@ -265,13 +409,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "checkbox",
+      "oecd_dimension": "economic_context",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Critical functions/infrastructure",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 20,
@@ -279,13 +431,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "single_choice",
+      "oecd_dimension": "economic_context",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Breadth of deployment",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 21,
@@ -293,13 +453,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "checkbox",
+      "oecd_dimension": "data_and_input",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Training-data linkage",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 22,
@@ -307,13 +475,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "checkbox",
+      "oecd_dimension": "ai_model",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Model linkage",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 23,
@@ -321,13 +497,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "multi_selection",
+      "oecd_dimension": "ai_model",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Usage rights",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 24,
@@ -335,13 +519,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "checkbox",
+      "oecd_dimension": "ai_model",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Multiple AI-system interaction linkage",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 25,
@@ -349,13 +541,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "multi_selection",
+      "oecd_dimension": "task_and_output",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "AI-system tasks",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 26,
@@ -363,13 +563,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "single_choice",
+      "oecd_dimension": "task_and_output",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Maximum autonomy level",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 27,
@@ -377,13 +585,21 @@
       "candidate_path": "response_actions[]",
       "claimed_mandatory": false,
       "existing_assessment": "partial",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "Actions represented without OECD response categories",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "open_text_and_multi_selection",
+      "oecd_dimension": "other_information",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Actions taken",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 28,
@@ -391,13 +607,21 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "No OECD-specific field or validated equivalent in experimental draft",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "open_text",
+      "oecd_dimension": "other_information",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Steps to reproduce",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     },
     {
       "criterion": 29,
@@ -405,14 +629,22 @@
       "candidate_path": "description",
       "claimed_mandatory": false,
       "existing_assessment": "partial",
-      "source_label_verified": false,
-      "source_mandatory_verified": false,
+      "source_label_verified": true,
+      "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
       "source_conditionals_verified": false,
       "discrepancy": "Generic narrative is not a dedicated additional-information field",
-      "disposition": "requires_primary_pdf_review"
+      "disposition": "source_format_and_mandatory_reviewed_independent_verification_pending",
+      "oecd_answer_format": "open_text",
+      "oecd_dimension": "other_information",
+      "primary_source_evidence": {
+        "document_doi": "10.1787/f326d4ac-en",
+        "page": "24",
+        "source_excerpt": "Additional information",
+        "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
+      }
     }
   ],
-  "conclusion": "29 candidate mappings inventoried; zero independently source-verified semantic mappings; no interoperability or conformance claim"
+  "conclusion": "All 29 rows mapped to primary-source pages and answer formats; independent interoperability, enumerations, cardinalities, and conditional semantics remain open."
 }
