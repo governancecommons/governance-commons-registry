@@ -23,3 +23,5 @@ jobs:
         run: python docs/research/gc-incident-evidence-draft/test_cross_record.py
       - name: Validate OECD 29-criterion research mapping
         run: python docs/research/gc-incident-evidence-draft/test_oecd_mapping.py
+      - name: Validate OECD mandatory-field research adapter
+        run: python docs/research/gc-incident-evidence-draft/oecd-mandatory/test_oecd_mandatory.py
