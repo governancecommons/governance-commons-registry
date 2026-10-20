@@ -1,0 +1,259 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://governancecommons.org/research/oecd-incident-2025/0.1.0/schema",
+  "title": "Non-normative OECD 2025 mandatory reporting adapter",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title",
+    "description",
+    "system_relationships",
+    "submitter",
+    "supporting_materials",
+    "severity",
+    "harm_types"
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "system_relationships": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "category",
+          "explanation"
+        ],
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": [
+              "direct_cause",
+              "contributing_factor",
+              "failure_to_act",
+              "overreliance_and_intentional_misuse",
+              "human_error",
+              "failure_to_comply_with_legal_frameworks",
+              "other"
+            ]
+          },
+          "explanation": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "submitter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "email",
+        "affiliation",
+        "relation_to_incident"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "affiliation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relation_to_incident": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "government_regulatory",
+              "public_interest_ngo",
+              "developer_provider",
+              "system_user",
+              "affected_stakeholder",
+              "knowledgeable_other",
+              "other"
+            ]
+          }
+        },
+        "other_explanation": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "relation_to_incident": {
+                "contains": {
+                  "const": "other"
+                }
+              }
+            },
+            "required": [
+              "relation_to_incident"
+            ]
+          },
+          "then": {
+            "required": [
+              "other_explanation"
+            ]
+          }
+        }
+      ]
+    },
+    "supporting_materials": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "reference",
+          "sensitivity"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "url",
+              "upload_reference",
+              "text_reference"
+            ]
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sensitivity": {
+            "type": "string",
+            "enum": [
+              "public",
+              "restricted",
+              "confidential"
+            ]
+          }
+        }
+      }
+    },
+    "severity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "categories"
+      ],
+      "properties": {
+        "categories": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "hazard",
+              "serious_hazard",
+              "incident",
+              "serious_incident",
+              "disaster",
+              "other"
+            ]
+          }
+        },
+        "other_explanation": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "categories": {
+                "contains": {
+                  "const": "other"
+                }
+              }
+            },
+            "required": [
+              "categories"
+            ]
+          },
+          "then": {
+            "required": [
+              "other_explanation"
+            ]
+          }
+        }
+      ]
+    },
+    "harm_types": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "categories"
+      ],
+      "properties": {
+        "categories": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "physical",
+              "psychological",
+              "reputational",
+              "economic_property",
+              "environmental",
+              "public_interest_critical_infrastructure",
+              "human_or_fundamental_rights",
+              "other"
+            ]
+          }
+        },
+        "other_explanation": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "categories": {
+                "contains": {
+                  "const": "other"
+                }
+              }
+            },
+            "required": [
+              "categories"
+            ]
+          },
+          "then": {
+            "required": [
+              "other_explanation"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
