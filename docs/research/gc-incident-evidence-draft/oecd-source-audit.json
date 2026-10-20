@@ -1,0 +1,34 @@
+{
+  "phase": "GC-INCIDENT.07",
+  "source": {
+    "publisher": "OECD",
+    "title": "Towards a common reporting framework for AI incidents",
+    "published": "2025-02-28",
+    "doi": "10.1787/f326d4ac-en",
+    "url": "https://www.oecd.org/en/publications/towards-a-common-reporting-framework-for-ai-incidents_f326d4ac-en.html",
+    "candidate_locations": [
+      "Table 2.2",
+      "Annex B Table B.1"
+    ]
+  },
+  "verified_claims": [
+    {
+      "claim": "framework_criteria_count",
+      "value": 29,
+      "evidence": "OECD publication abstract",
+      "review": "primary_source_confirmed"
+    }
+  ],
+  "unverified_claims": [
+    "individual_field_wording",
+    "mandatory_optional_classification",
+    "controlled_vocabularies",
+    "cardinalities",
+    "conditional_requirements",
+    "interoperability_with_independent_implementations"
+  ],
+  "disposition": "source_audit_in_progress",
+  "normative": false,
+  "interoperability_verified": false,
+  "release_eligible": false
+}
