@@ -1,0 +1,29 @@
+{
+  "title": "Example incident",
+  "description": "Illustrative event only",
+  "system_relationships": [
+    {
+      "category": "contributing_factor",
+      "explanation": "Possible secondary role; not independently verified"
+    }
+  ],
+  "submitter": {
+    "role": "observer",
+    "email": "observer@example.org",
+    "affiliation": "Example research group",
+    "relation_to_incident": [
+      "knowledgeable_other"
+    ]
+  },
+  "supporting_materials": [],
+  "severity": {
+    "categories": [
+      "hazard"
+    ]
+  },
+  "harm_types": {
+    "categories": [
+      "economic_property"
+    ]
+  }
+}
