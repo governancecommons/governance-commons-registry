@@ -20,10 +20,10 @@ def private_bundle(mandatory: dict, extension: dict) -> dict:
     return {"mandatory": mandatory, "optional": extension}
 
 
-def public_bundle(profile: dict, mandatory: dict, extension: dict) -> dict:
+def public_bundle(profile: dict, mandatory: dict, extension: dict, records: dict[str, dict] | None = None) -> dict:
     """Never export optional fields: their contents are not classified for release."""
     validate_optional(extension)
     from sys import path
     path.insert(0, str(ROOT.parent / "oecd-mandatory"))
     from export_adapter import public_export
-    return public_export(profile, mandatory)
+    return public_export(profile, mandatory, records)
