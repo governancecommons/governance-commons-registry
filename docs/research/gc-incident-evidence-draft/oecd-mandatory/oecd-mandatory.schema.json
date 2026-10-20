@@ -5,6 +5,7 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
+    "incident_id",
     "title",
     "description",
     "system_relationships",
@@ -254,6 +255,10 @@
           }
         }
       ]
+    },
+    "incident_id": {
+      "type": "string",
+      "minLength": 1
     }
   }
 }
