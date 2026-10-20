@@ -27,3 +27,7 @@ jobs:
         run: python docs/research/gc-incident-evidence-draft/oecd-mandatory/test_oecd_mandatory.py
       - name: Validate OECD adapter binding and privacy export guard
         run: python docs/research/gc-incident-evidence-draft/oecd-mandatory/test_export_adapter.py
+      - name: Validate 22 optional OECD research fields
+        run: python docs/research/gc-incident-evidence-draft/oecd-optional/test_optional.py
+      - name: Verify optional evidence excluded from public export
+        run: python docs/research/gc-incident-evidence-draft/oecd-optional/test_bundle.py
