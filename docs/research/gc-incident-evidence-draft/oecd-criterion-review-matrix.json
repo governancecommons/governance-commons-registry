@@ -5,7 +5,7 @@
     "doi": "10.1787/f326d4ac-en",
     "location": "Table 2.2 and Annex B Table B.1"
   },
-  "method": "Source-text reconciliation against user-provided OECD PDF, Annex B Table B.1 pp.23-24; field labels and mandatory marks cross-checked by criterion number. Format transcriptions are provisional and require independent reviewer signoff. Controlled enumerations, cardinalities, and conditional semantics remain unverified.",
+  "method": "Source-text reconciliation of Annex B Table B.1 pp.23-24: mandatory marks and answer formats recorded. Exact labels, subcriteria vocabularies, cardinalities and conditional semantics require separate verbatim comparison and independent review.",
   "criteria": [
     {
       "criterion": 1,
@@ -13,7 +13,7 @@
       "candidate_path": "title",
       "claimed_mandatory": true,
       "existing_assessment": "partial",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -25,7 +25,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "23",
-        "source_excerpt": "Title",
+        "source_excerpt": "Criterion 1 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -35,7 +35,7 @@
       "candidate_path": "description",
       "claimed_mandatory": true,
       "existing_assessment": "partial",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -47,7 +47,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "23",
-        "source_excerpt": "Description of incident",
+        "source_excerpt": "Criterion 2 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -57,7 +57,7 @@
       "candidate_path": "affected_systems[].relationship",
       "claimed_mandatory": true,
       "existing_assessment": "partial",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -69,7 +69,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "23",
-        "source_excerpt": "AI-system relationship to incident",
+        "source_excerpt": "Criterion 3 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -79,7 +79,7 @@
       "candidate_path": "reporter.role",
       "claimed_mandatory": true,
       "existing_assessment": "partial",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -91,7 +91,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "23",
-        "source_excerpt": "Submitter role/affiliation",
+        "source_excerpt": "Criterion 4 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -101,7 +101,7 @@
       "candidate_path": "timeline.first_known_at",
       "claimed_mandatory": false,
       "existing_assessment": "partial",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -113,7 +113,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "23",
-        "source_excerpt": "Date of first known occurrence",
+        "source_excerpt": "Criterion 5 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -123,7 +123,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -135,7 +135,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "23",
-        "source_excerpt": "Countries of occurrence",
+        "source_excerpt": "Criterion 6 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -145,7 +145,7 @@
       "candidate_path": "evidence_refs[]",
       "claimed_mandatory": true,
       "existing_assessment": "partial",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -157,7 +157,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "23",
-        "source_excerpt": "Supporting materials",
+        "source_excerpt": "Criterion 7 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -167,7 +167,7 @@
       "candidate_path": "affected_systems[].system;affected_systems[].version",
       "claimed_mandatory": false,
       "existing_assessment": "partial",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -179,7 +179,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "23",
-        "source_excerpt": "AI-system name and version",
+        "source_excerpt": "Criterion 8 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -189,7 +189,7 @@
       "candidate_path": "affected_systems[].developer;affected_systems[].deployer",
       "claimed_mandatory": false,
       "existing_assessment": "partial",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -201,7 +201,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "23",
-        "source_excerpt": "Developer/deployer organisations",
+        "source_excerpt": "Criterion 9 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -211,7 +211,7 @@
       "candidate_path": "severity.classification",
       "claimed_mandatory": true,
       "existing_assessment": "partial",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -223,7 +223,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "23",
-        "source_excerpt": "Severity",
+        "source_excerpt": "Criterion 10 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -233,7 +233,7 @@
       "candidate_path": "harm.status;harm.description",
       "claimed_mandatory": true,
       "existing_assessment": "partial",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -245,7 +245,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "23",
-        "source_excerpt": "Harm type",
+        "source_excerpt": "Criterion 11 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -255,7 +255,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -267,7 +267,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "23",
-        "source_excerpt": "Quantification of harm",
+        "source_excerpt": "Criterion 12 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -277,7 +277,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -289,7 +289,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Unintended/wrongful use linkage",
+        "source_excerpt": "Criterion 13 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -299,7 +299,7 @@
       "candidate_path": "harm.affected_parties[]",
       "claimed_mandatory": false,
       "existing_assessment": "partial",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -311,7 +311,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Affected stakeholders",
+        "source_excerpt": "Criterion 14 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -321,7 +321,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -333,7 +333,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Human/fundamental rights impacts",
+        "source_excerpt": "Criterion 15 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -343,7 +343,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -355,7 +355,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Associated AI principles",
+        "source_excerpt": "Criterion 16 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -365,7 +365,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -377,7 +377,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Industries",
+        "source_excerpt": "Criterion 17 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -387,7 +387,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -399,7 +399,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Business functions",
+        "source_excerpt": "Criterion 18 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -409,7 +409,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -421,7 +421,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Critical functions/infrastructure",
+        "source_excerpt": "Criterion 19 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -431,7 +431,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -443,7 +443,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Breadth of deployment",
+        "source_excerpt": "Criterion 20 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -453,7 +453,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -465,7 +465,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Training-data linkage",
+        "source_excerpt": "Criterion 21 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -475,7 +475,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -487,7 +487,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Model linkage",
+        "source_excerpt": "Criterion 22 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -497,7 +497,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -509,7 +509,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Usage rights",
+        "source_excerpt": "Criterion 23 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -519,7 +519,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -531,7 +531,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Multiple AI-system interaction linkage",
+        "source_excerpt": "Criterion 24 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -541,7 +541,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -553,7 +553,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "AI-system tasks",
+        "source_excerpt": "Criterion 25 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -563,7 +563,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -575,7 +575,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Maximum autonomy level",
+        "source_excerpt": "Criterion 26 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -585,7 +585,7 @@
       "candidate_path": "response_actions[]",
       "claimed_mandatory": false,
       "existing_assessment": "partial",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -597,7 +597,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Actions taken",
+        "source_excerpt": "Criterion 27 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -607,7 +607,7 @@
       "candidate_path": null,
       "claimed_mandatory": false,
       "existing_assessment": "gap",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -619,7 +619,7 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Steps to reproduce",
+        "source_excerpt": "Criterion 28 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     },
@@ -629,7 +629,7 @@
       "candidate_path": "description",
       "claimed_mandatory": false,
       "existing_assessment": "partial",
-      "source_label_verified": true,
+      "source_label_verified": false,
       "source_mandatory_verified": true,
       "source_vocabulary_verified": false,
       "source_cardinality_verified": false,
@@ -641,10 +641,10 @@
       "primary_source_evidence": {
         "document_doi": "10.1787/f326d4ac-en",
         "page": "24",
-        "source_excerpt": "Additional information",
+        "source_excerpt": "Criterion 29 in Annex B Table B.1 (source label transcription pending)",
         "reviewer": "GC source-text reconciliation (automated assistant; independent review pending)"
       }
     }
   ],
-  "conclusion": "All 29 rows mapped to primary-source pages and answer formats; independent interoperability, enumerations, cardinalities, and conditional semantics remain open."
+  "conclusion": "29 primary-source locators, mandatory marks and answer formats inventoried; exact labels and interoperability remain unverified."
 }
