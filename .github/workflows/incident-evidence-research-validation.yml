@@ -37,3 +37,5 @@ jobs:
         run: python docs/research/gc-incident-evidence-draft/test_oecd_source_audit.py
       - name: Verify 29-criterion OECD source review matrix
         run: python docs/research/gc-incident-evidence-draft/test_oecd_criterion_review.py
+      - name: Reject unsupported OECD audit and conformance claims
+        run: python docs/research/gc-incident-evidence-draft/test_oecd_review_adversarial.py
