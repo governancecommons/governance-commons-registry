@@ -1,0 +1,27 @@
+{
+  "profile": "GC Incident Evidence Profile",
+  "version": "0.1.0",
+  "phase": "GC-INCIDENT.06",
+  "decision": "research_baseline_only",
+  "normative": false,
+  "oecd_conformant": false,
+  "automatic_publication_permitted": false,
+  "core_schema_changed": false,
+  "criteria": {
+    "total": 29,
+    "mandatory": 7,
+    "optional": 22
+  },
+  "gates": {
+    "structural_validation": "implemented",
+    "incident_identity_binding": "implemented_noncryptographic",
+    "linked_review_record_validation": "implemented_partial_semantics",
+    "oecd_source_taxonomy_audit": "open",
+    "canonical_validator_and_provenance": "open",
+    "narrative_redaction_and_url_safety": "open",
+    "consent_access_retention": "open",
+    "independent_interoperability_fixtures": "open",
+    "maintainer_release_approval": "open"
+  },
+  "release_eligible": false
+}
