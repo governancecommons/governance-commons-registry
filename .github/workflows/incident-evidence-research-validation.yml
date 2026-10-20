@@ -35,3 +35,5 @@ jobs:
         run: python docs/research/gc-incident-evidence-draft/test_acceptance_status.py
       - name: Verify OECD primary-source audit and interoperability claim boundaries
         run: python docs/research/gc-incident-evidence-draft/test_oecd_source_audit.py
+      - name: Verify 29-criterion OECD source review matrix
+        run: python docs/research/gc-incident-evidence-draft/test_oecd_criterion_review.py
