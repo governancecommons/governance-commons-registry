@@ -29,5 +29,6 @@
   },
   "harm_types": {
     "categories": []
-  }
+  },
+  "incident_id": "example-001"
 }
