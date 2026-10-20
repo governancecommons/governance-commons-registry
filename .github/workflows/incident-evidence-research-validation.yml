@@ -39,3 +39,5 @@ jobs:
         run: python docs/research/gc-incident-evidence-draft/test_oecd_criterion_review.py
       - name: Reject unsupported OECD audit and conformance claims
         run: python docs/research/gc-incident-evidence-draft/test_oecd_review_adversarial.py
+      - name: Verify OECD Annex B source-derived answer formats
+        run: python docs/research/gc-incident-evidence-draft/test_oecd_annex_b_formats.py
