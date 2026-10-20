@@ -1,0 +1,380 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://governancecommons.org/research/oecd-optional/0.1.0/schema",
+  "title": "Research-only optional fields, NOT OECD taxonomy conformance",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "12": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "measure",
+          "value",
+          "unit"
+        ],
+        "properties": {
+          "measure": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {
+            "type": "number",
+            "minimum": 0
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "methodology": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "13": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "details"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "yes",
+            "no",
+            "unknown",
+            "not_assessed"
+          ]
+        },
+        "details": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "14": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "15": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "details"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "yes",
+            "no",
+            "unknown",
+            "not_assessed"
+          ]
+        },
+        "details": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "16": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "17": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "18": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "19": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "details"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "yes",
+            "no",
+            "unknown",
+            "not_assessed"
+          ]
+        },
+        "details": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "20": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "details"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "yes",
+            "no",
+            "unknown",
+            "not_assessed"
+          ]
+        },
+        "details": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "21": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "details"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "yes",
+            "no",
+            "unknown",
+            "not_assessed"
+          ]
+        },
+        "details": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "22": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "details"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "yes",
+            "no",
+            "unknown",
+            "not_assessed"
+          ]
+        },
+        "details": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "23": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "24": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "details"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "yes",
+            "no",
+            "unknown",
+            "not_assessed"
+          ]
+        },
+        "details": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "25": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "26": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "details"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "yes",
+            "no",
+            "unknown",
+            "not_assessed"
+          ]
+        },
+        "details": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "27": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "description",
+          "status"
+        ],
+        "properties": {
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "proposed",
+              "in_progress",
+              "completed",
+              "unknown"
+            ]
+          }
+        }
+      }
+    },
+    "28": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "instructions",
+        "sensitivity"
+      ],
+      "properties": {
+        "instructions": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sensitivity": {
+          "enum": [
+            "restricted",
+            "confidential"
+          ]
+        }
+      }
+    },
+    "29": {
+      "type": "string",
+      "minLength": 1
+    },
+    "05": {
+      "type": "string",
+      "format": "date"
+    },
+    "06": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{2}$"
+      }
+    },
+    "08": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "09": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "role"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "developer",
+              "deployer",
+              "both",
+              "other"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
