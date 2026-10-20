@@ -42,7 +42,7 @@ def issues(candidate, audit, source_audit, status):
             if not isinstance(proof, dict) or not all(
                 isinstance(proof.get(k), str) and proof[k].strip()
                 for k in ("document_doi", "page", "source_excerpt", "reviewer")
-            ):
+            ) or (any(row.get(flag) is True for flag in FIELDS if flag != "source_mandatory_verified") and "transcription pending" in proof.get("source_excerpt", "").lower()):
                 errors.append(f"unsupported verification {index + 1}")
         if row.get("disposition") == "requires_primary_pdf_review" and any(
             row.get(flag) is True for flag in FIELDS

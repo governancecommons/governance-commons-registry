@@ -25,10 +25,20 @@
     "controlled_vocabularies",
     "cardinalities",
     "conditional_requirements",
-    "interoperability_with_independent_implementations"
+    "interoperability_with_independent_implementations",
+    "independent_verbatim_primary_source_comparison",
+    "independent_interoperability_fixture_validation"
   ],
-  "disposition": "source_audit_in_progress",
+  "disposition": "annex_b_inventory_recorded_independent_verification_pending",
   "normative": false,
   "interoperability_verified": false,
-  "release_eligible": false
+  "release_eligible": false,
+  "repository_inventory": {
+    "criteria": 29,
+    "mandatory_markers_recorded": 7,
+    "optional_markers_recorded": 22,
+    "answer_formats_recorded": true,
+    "evidence": "oecd-criterion-review-matrix.json",
+    "verification_level": "repository_review_only"
+  }
 }
