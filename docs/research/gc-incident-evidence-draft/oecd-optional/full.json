@@ -1,0 +1,86 @@
+{
+  "12": [
+    {
+      "measure": "affected requests",
+      "value": 3,
+      "unit": "requests"
+    }
+  ],
+  "13": {
+    "status": "unknown",
+    "details": "Not verified"
+  },
+  "14": [
+    "illustrative_not_oecd_taxonomy"
+  ],
+  "15": {
+    "status": "unknown",
+    "details": "Not verified"
+  },
+  "16": [
+    "illustrative_not_oecd_taxonomy"
+  ],
+  "17": [
+    "illustrative_not_oecd_taxonomy"
+  ],
+  "18": [
+    "illustrative_not_oecd_taxonomy"
+  ],
+  "19": {
+    "status": "unknown",
+    "details": "Not verified"
+  },
+  "20": {
+    "status": "unknown",
+    "details": "Not verified"
+  },
+  "21": {
+    "status": "unknown",
+    "details": "Not verified"
+  },
+  "22": {
+    "status": "unknown",
+    "details": "Not verified"
+  },
+  "23": [
+    "illustrative_not_oecd_taxonomy"
+  ],
+  "24": {
+    "status": "unknown",
+    "details": "Not verified"
+  },
+  "25": [
+    "illustrative_not_oecd_taxonomy"
+  ],
+  "26": {
+    "status": "unknown",
+    "details": "Not verified"
+  },
+  "27": [
+    {
+      "description": "Investigate",
+      "status": "in_progress"
+    }
+  ],
+  "28": {
+    "instructions": "Sensitive reproduction steps",
+    "sensitivity": "restricted"
+  },
+  "29": "Additional illustrative information",
+  "05": "2026-10-19",
+  "06": [
+    "US"
+  ],
+  "08": [
+    {
+      "name": "Example AI",
+      "version": "0.1"
+    }
+  ],
+  "09": [
+    {
+      "name": "Example Org",
+      "role": "developer"
+    }
+  ]
+}
