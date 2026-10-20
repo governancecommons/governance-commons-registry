@@ -31,6 +31,8 @@ def validate_pair(profile: dict, adapter: dict) -> None:
         errors = list(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(document))
         if errors:
             raise AdapterError(f"{schema_path.name}: " + "; ".join(e.message for e in errors))
+    if profile["incident_id"] != adapter["incident_id"]:
+        raise AdapterError("Incident ID mismatch")
     if profile["title"] != adapter["title"] or profile["description"] != adapter["description"]:
         raise AdapterError("Incident title/description mismatch")
     if profile["reporter"]["role"] != adapter["submitter"]["role"]:
@@ -49,13 +51,29 @@ def validate_pair(profile: dict, adapter: dict) -> None:
         raise AdapterError("Nonpublic profile evidence cannot be exported")
 
 
-def public_export(profile: dict, adapter: dict) -> dict:
+def verify_review_evidence(profile: dict, records: dict[str, dict] | None) -> None:
+    """Fail closed unless linked review approval is structurally and semantically checked.
+
+    Cross-record validation does not prove cryptographic authenticity or consent.
+    """
+    if records is None:
+        raise AdapterError("Public export requires Governance Record evidence index")
+    from sys import path
+    path.insert(0, str(PROFILE_ROOT))
+    from cross_record import cross_record_issues
+    issues = cross_record_issues(profile, records)
+    if issues:
+        raise AdapterError("Governance Record evidence invalid: " + "; ".join(issues))
+
+
+def public_export(profile: dict, adapter: dict, records: dict[str, dict] | None = None) -> dict:
     """Return a narrow allowlisted public view; do not export submitter PII.
 
     This is a serialization guard, NOT evidence of authorization, consent,
     verified redaction, approved Governance Records, or safe URL targets.
     """
     validate_pair(profile, adapter)
+    verify_review_evidence(profile, records)
     return {
         "profile_version": profile["profile_version"],
         "incident_id": profile["incident_id"],
