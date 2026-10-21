@@ -1,0 +1,29 @@
+{
+  "phase": "GC-INCIDENT.08",
+  "status": "design_baseline",
+  "source_doi": "10.1787/f326d4ac-en",
+  "independent_author_review": "pending",
+  "normative": false,
+  "interoperability_verified": false,
+  "release_eligible": false,
+  "fixture_contract": {
+    "required": [
+      "id",
+      "provenance",
+      "expected_result",
+      "criterion_oracle"
+    ],
+    "expected_result_values": [
+      "accept",
+      "reject"
+    ],
+    "criterion_oracle_status": "pending_independent_source_verification"
+  },
+  "fixtures": [],
+  "blocking_gates": [
+    "independent_source_label_review",
+    "independent_fixture_authorship",
+    "round_trip_semantic_equivalence",
+    "human_release_approval"
+  ]
+}
