@@ -70,6 +70,9 @@ def recover(result, *, authorized=False):
         raise MappingError("Invalid GC projection")
     envelope = result.get("private_envelope")
     original = restore(envelope, authorized=authorized)
-    if profile["incident_id"] != original["incident_id"] or profile["title"] != original["title"] or profile["description"] != original["description"]:
-        raise MappingError("Projection identity mismatch")
+    expected = project(original, authorized=True, timeline=profile["timeline"])
+    if profile != expected["profile"]:
+        raise MappingError("Projection modified or unsupported classification introduced")
+    if result["mapping_issues"] != expected["mapping_issues"]:
+        raise MappingError("Mapping loss accounting altered")
     return original
