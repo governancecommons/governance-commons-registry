@@ -70,6 +70,8 @@ def recover(result, *, authorized=False):
         raise MappingError("Invalid GC projection")
     envelope = result.get("private_envelope")
     original = restore(envelope, authorized=authorized)
+    if not isinstance(profile.get("timeline"), dict):
+        raise MappingError("Missing projection timeline")
     expected = project(original, authorized=True, timeline=profile["timeline"])
     if profile != expected["profile"]:
         raise MappingError("Projection modified or unsupported classification introduced")
