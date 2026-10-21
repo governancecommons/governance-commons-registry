@@ -269,7 +269,7 @@
       "page": 24,
       "mandatory": false,
       "answer_format": "open_text_and_multi_selection",
-      "dimension": "other",
+      "dimension": "other_information",
       "source": "OECD 2025 Annex B Table B.1",
       "source_review": "assistant_primary_pdf_review",
       "independent_human_review": "pending"
@@ -279,7 +279,7 @@
       "page": 24,
       "mandatory": false,
       "answer_format": "open_text",
-      "dimension": "other",
+      "dimension": "other_information",
       "source": "OECD 2025 Annex B Table B.1",
       "source_review": "assistant_primary_pdf_review",
       "independent_human_review": "pending"
@@ -289,7 +289,7 @@
       "page": 24,
       "mandatory": false,
       "answer_format": "open_text",
-      "dimension": "other",
+      "dimension": "other_information",
       "source": "OECD 2025 Annex B Table B.1",
       "source_review": "assistant_primary_pdf_review",
       "independent_human_review": "pending"
