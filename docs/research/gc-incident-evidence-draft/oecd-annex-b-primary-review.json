@@ -1,0 +1,298 @@
+{
+  "phase": "GC-INCIDENT.08",
+  "doi": "10.1787/f326d4ac-en",
+  "source_url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/02/towards-a-common-reporting-framework-for-ai-incidents_8c488fdb/f326d4ac-en.pdf",
+  "scope": "Source-derived structural inventory; not independent interoperability certification",
+  "criteria": [
+    {
+      "criterion": 1,
+      "page": 23,
+      "mandatory": true,
+      "answer_format": "open_text",
+      "dimension": "incident_metadata",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 2,
+      "page": 23,
+      "mandatory": true,
+      "answer_format": "open_text",
+      "dimension": "incident_metadata",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 3,
+      "page": 23,
+      "mandatory": true,
+      "answer_format": "multi_selection_with_open_text",
+      "dimension": "incident_metadata",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 4,
+      "page": 23,
+      "mandatory": true,
+      "answer_format": "open_text_and_multi_selection",
+      "dimension": "incident_metadata",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 5,
+      "page": 23,
+      "mandatory": false,
+      "answer_format": "date",
+      "dimension": "incident_metadata",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 6,
+      "page": 23,
+      "mandatory": false,
+      "answer_format": "multi_selection",
+      "dimension": "incident_metadata",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 7,
+      "page": 23,
+      "mandatory": true,
+      "answer_format": "open_text_urls_upload",
+      "dimension": "incident_metadata",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 8,
+      "page": 23,
+      "mandatory": false,
+      "answer_format": "open_text",
+      "dimension": "incident_metadata",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 9,
+      "page": 23,
+      "mandatory": false,
+      "answer_format": "open_text",
+      "dimension": "incident_metadata",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 10,
+      "page": 23,
+      "mandatory": true,
+      "answer_format": "multi_selection",
+      "dimension": "harm_details",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 11,
+      "page": 23,
+      "mandatory": true,
+      "answer_format": "multi_selection",
+      "dimension": "harm_details",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 12,
+      "page": 23,
+      "mandatory": false,
+      "answer_format": "multi_selection",
+      "dimension": "harm_details",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 13,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "checkbox",
+      "dimension": "harm_details",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 14,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "multi_selection",
+      "dimension": "people_and_planet",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 15,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "checkbox",
+      "dimension": "people_and_planet",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 16,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "multi_selection",
+      "dimension": "people_and_planet",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 17,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "multi_selection",
+      "dimension": "economic_context",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 18,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "multi_selection",
+      "dimension": "economic_context",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 19,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "checkbox",
+      "dimension": "economic_context",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 20,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "single_choice",
+      "dimension": "economic_context",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 21,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "checkbox",
+      "dimension": "data_and_input",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 22,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "checkbox",
+      "dimension": "ai_model",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 23,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "multi_selection",
+      "dimension": "ai_model",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 24,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "checkbox",
+      "dimension": "ai_model",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 25,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "multi_selection",
+      "dimension": "task_and_output",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 26,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "single_choice",
+      "dimension": "task_and_output",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 27,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "open_text_and_multi_selection",
+      "dimension": "other_information",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 28,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "open_text",
+      "dimension": "other_information",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    },
+    {
+      "criterion": 29,
+      "page": 24,
+      "mandatory": false,
+      "answer_format": "open_text",
+      "dimension": "other_information",
+      "source": "OECD 2025 Annex B Table B.1",
+      "source_review": "assistant_primary_pdf_review",
+      "independent_human_review": "pending"
+    }
+  ]
+}
