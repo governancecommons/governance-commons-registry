@@ -53,3 +53,7 @@ jobs:
         run: python docs/research/gc-incident-evidence-draft/oecd-mandatory/test_internal_interchange.py
       - name: Test conservative OECD-to-GC projection and private recovery
         run: python docs/research/gc-incident-evidence-draft/oecd-mandatory/test_semantic_bridge.py
+      - name: Test independent OECD verification acceptance gate
+        run: |
+          python docs/research/gc-incident-evidence-draft/gc-incident-09-acceptance.py
+          python docs/research/gc-incident-evidence-draft/test_gc_incident_09_acceptance.py
