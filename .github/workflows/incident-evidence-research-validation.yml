@@ -45,3 +45,5 @@ jobs:
         run: python docs/research/gc-incident-evidence-draft/test_independent_fixture_gate.py
       - name: Cross-check primary OECD Annex B structural review
         run: python docs/research/gc-incident-evidence-draft/test_oecd_primary_review.py
+      - name: Exercise synthetic OECD adapter acceptance and rejection cases
+        run: python docs/research/gc-incident-evidence-draft/test_synthetic_adapter_cases.py
