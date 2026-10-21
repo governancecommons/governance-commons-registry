@@ -49,6 +49,24 @@ for section, key, value in [
 bad = copy.deepcopy(result)
 bad["mapping_issues"] = ["all OECD categories verified"]
 rejects(lambda: recover(bad, authorized=True))
+# Independently vary the three research adapter taxonomies; a conservative GC
+# projection must not silently promote any category to a GC classification.
+for field, category in [
+    ("system_relationships", "direct_cause"),
+    ("severity", "disaster"),
+    ("harm_types", "environmental"),
+]:
+    variant = copy.deepcopy(adapter)
+    if field == "system_relationships":
+        variant[field][0]["category"] = category
+    else:
+        variant[field]["categories"] = [category]
+    candidate = project(variant, authorized=True, timeline=timeline)
+    assert candidate["profile"]["affected_systems"][0]["relationship"] == "unknown"
+    assert candidate["profile"]["severity"]["status"] == "unassessed"
+    assert candidate["profile"]["harm"]["status"] == "unknown"
+    assert recover(candidate, authorized=True) == variant
+
 print("PASS rejected unsupported classification promotion and loss-accounting tampering")
 print("PASS: restricted GC projection, explicit semantic gaps, private source recovery and refusal tests")
 print("Source recovery is NOT GC-native semantic round-trip equivalence")
