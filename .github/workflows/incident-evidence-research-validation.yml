@@ -51,3 +51,5 @@ jobs:
         run: python docs/research/gc-incident-evidence-draft/oecd-mandatory/test_round_trip_probe.py
       - name: Test private OECD adapter interchange boundaries
         run: python docs/research/gc-incident-evidence-draft/oecd-mandatory/test_internal_interchange.py
+      - name: Test conservative OECD-to-GC projection and private recovery
+        run: python docs/research/gc-incident-evidence-draft/oecd-mandatory/test_semantic_bridge.py
