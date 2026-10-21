@@ -33,5 +33,22 @@ rejects(lambda: recover(bad, authorized=True))
 bad = copy.deepcopy(result)
 bad["mapping_issues"] = []
 rejects(lambda: recover(bad, authorized=True))
+for section, key, value in [
+    ("severity", "status", "assessed"),
+    ("harm", "status", "reported"),
+    ("affected_systems", None, "involved"),
+    ("disclosure", "publication_status", "approved_for_release"),
+    ("review", "status", "approved"),
+]:
+    bad = copy.deepcopy(result)
+    if section == "affected_systems":
+        bad["profile"][section][0]["relationship"] = value
+    else:
+        bad["profile"][section][key] = value
+    rejects(lambda b=bad: recover(b, authorized=True))
+bad = copy.deepcopy(result)
+bad["mapping_issues"] = ["all OECD categories verified"]
+rejects(lambda: recover(bad, authorized=True))
+print("PASS rejected unsupported classification promotion and loss-accounting tampering")
 print("PASS: restricted GC projection, explicit semantic gaps, private source recovery and refusal tests")
 print("Source recovery is NOT GC-native semantic round-trip equivalence")
