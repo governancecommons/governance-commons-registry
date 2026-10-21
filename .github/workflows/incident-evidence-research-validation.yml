@@ -49,3 +49,5 @@ jobs:
         run: python docs/research/gc-incident-evidence-draft/test_synthetic_adapter_cases.py
       - name: Test OECD adapter round-trip loss boundaries
         run: python docs/research/gc-incident-evidence-draft/oecd-mandatory/test_round_trip_probe.py
+      - name: Test private OECD adapter interchange boundaries
+        run: python docs/research/gc-incident-evidence-draft/oecd-mandatory/test_internal_interchange.py
