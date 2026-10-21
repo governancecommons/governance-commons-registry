@@ -16,7 +16,9 @@ GC_VALIDATOR = Draft202012Validator(GC_SCHEMA, format_checker=FormatChecker())
 class MappingError(ValueError):
     pass
 
-def project(adapter, *, authorized=False):
+def project(adapter, *, authorized=False, timeline=None):
+    if not isinstance(timeline, dict) or set(timeline) != {"first_known_at", "reported_at"}:
+        raise MappingError("Verified incident timestamps required; do not synthesize dates")
     envelope = capture(adapter, authorized=authorized)
     incident_id = adapter["incident_id"]
     profile = {
@@ -33,10 +35,7 @@ def project(adapter, *, authorized=False):
             "system": {"type": "unverified-ai-system", "id": "local:" + incident_id},
             "relationship": "unknown",
         }],
-        "timeline": {
-            "first_known_at": "1970-01-01T00:00:00Z",
-            "reported_at": "1970-01-01T00:00:00Z",
-        },
+        "timeline": copy.deepcopy(timeline),
         "harm": {"status": "unknown", "description": "OECD adapter harm categories not mapped"},
         "severity": {"status": "unassessed"},
         "response_actions": [],
@@ -51,7 +50,7 @@ def project(adapter, *, authorized=False):
     # This draft schema requires dates. Synthetic placeholders must not be mistaken
     # for actual incident timestamps; expose them as explicit unmapped placeholders.
     issues = [
-        "No sourced incident timestamps: GC required date fields use epoch placeholders; never publish",
+        "Timestamps are caller-supplied context, not present in mandatory adapter; provenance unverified",
         "OECD causal categories have no verified equivalent in GC involved/suspected/unknown",
         "Submitter identity, evidence linkage, severity and harm classifications unverified",
     ]
