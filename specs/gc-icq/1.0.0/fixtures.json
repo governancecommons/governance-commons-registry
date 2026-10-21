@@ -1,0 +1,54 @@
+{
+  "valid": [
+    {
+      "specVersion": "1.0.0",
+      "assetId": "public-standard",
+      "impact": "low",
+      "access": "open",
+      "quadrant": "Q3",
+      "dataLabels": [],
+      "publication": {
+        "status": "approved",
+        "approvedBy": "reviewer",
+        "approvalRecordId": "review-1"
+      }
+    },
+    {
+      "specVersion": "1.0.0",
+      "assetId": "exposed-token",
+      "impact": "high",
+      "access": "open",
+      "quadrant": "Q4",
+      "dataLabels": [
+        "CREDENTIAL"
+      ],
+      "publication": {
+        "status": "rejected"
+      }
+    }
+  ],
+  "invalid": [
+    {
+      "specVersion": "1.0.0",
+      "assetId": "wrong-quadrant",
+      "impact": "high",
+      "access": "open",
+      "quadrant": "Q3",
+      "dataLabels": [],
+      "publication": {
+        "status": "draft"
+      }
+    },
+    {
+      "specVersion": "1.0.0",
+      "assetId": "missing-reviewer",
+      "impact": "low",
+      "access": "open",
+      "quadrant": "Q3",
+      "dataLabels": [],
+      "publication": {
+        "status": "approved"
+      }
+    }
+  ]
+}
